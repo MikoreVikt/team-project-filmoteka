@@ -1,4 +1,5 @@
 const backdropRef = document.querySelector('.backdrop');
+const galleryRef = document.querySelector('.gallery');
 
 galleryRef.addEventListener('click', onPosterClick);
 
@@ -40,7 +41,7 @@ function renderModalWindow({
 }) {
   const vote = vote_average.toFixed(1);
   const populary = popularity.toFixed(1);
-  const genre = getGenres(genres);
+  const genre = genres.map(obj => obj.name).join(', ');
 
   const markupModal = `<div class="modal"><div class="modal__container">
           <button class="close-btn">
@@ -74,8 +75,4 @@ function renderModalWindow({
         </div>`;
 
   backdropRef.innerHTML = markupModal;
-}
-
-function getGenres(array) {
-  return array.map(obj => obj.name).join(', ');
 }
