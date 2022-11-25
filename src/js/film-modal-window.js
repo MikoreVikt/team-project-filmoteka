@@ -44,9 +44,9 @@ function renderModalWindow({
 
   const markupModal = `<div class="modal"><div class="modal__container">
           <button class="close-btn">
-            <svg class="close-btn__icon" width="18" height="18">
-              <use href="./icon.svg#icon-close-modal"></use>
-            </svg>
+            // <svg class="close-btn__icon" width="18" height="18">
+            //   <use href="./icon.svg#icon-close-modal"></use>
+            // </svg>
           </button>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" />
     <div class="content-wrapper">
