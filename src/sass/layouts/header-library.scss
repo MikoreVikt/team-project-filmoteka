@@ -1,0 +1,11 @@
+.btn-list {
+    display: flex;
+    justify-content: center;
+        align-items: center;
+}
+
+.btn-item {
+    &:not(:last-child) {
+            margin-right: 16px;
+        }
+}
