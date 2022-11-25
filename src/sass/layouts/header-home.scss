@@ -9,14 +9,9 @@
 .nav-list {
     display: flex;
     align-items: center;
+    column-gap: 40px
 }
 
-.nav-item {
-    &:not(:last-child) {
-        margin-right: 40px;
-    }
-
-}
 
 .form {
     display: flex;

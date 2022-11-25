@@ -2,10 +2,6 @@
     display: flex;
     justify-content: center;
         align-items: center;
+        column-gap: 16px
 }
 
-.btn-item {
-    &:not(:last-child) {
-            margin-right: 16px;
-        }
-}
