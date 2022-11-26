@@ -1,0 +1,38 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0 auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  &__btn {
+    width: 40px;
+    height: 40px;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: var(--black-color);
+    border-radius: 5px;
+    border-color: transparent;
+    cursor: pointer;
+    box-shadow: (0px 5px 11px rgba(248, 141, 53, 0.6));
+  }
+  &__btn:hover {
+    color: var(--white-color);
+    background-color: var(--bg-orange-color);
+  }
+  &__btn-current {
+    border-radius: 5px;
+    color: var(--white-color);
+    background-color: var(--bg-orange-color);
+  }
+}
