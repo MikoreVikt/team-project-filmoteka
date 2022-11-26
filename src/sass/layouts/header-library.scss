@@ -5,3 +5,39 @@
         column-gap: 16px
 }
 
+
+
+.button {
+
+    padding: 13px 36px;
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    min-width: 130px;
+
+    font-family: inherit;
+    color: var(--white-color);
+    background-color: transparent;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+    
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.83;
+    align-items: center;
+    text-align: center;
+
+
+    @media screen and (min-width: 768px) {
+    padding: 13px 46px;
+        min-width: 152px;
+        font-size: 16px;
+    }
+
+    @media screen and (min-width: 1200px) {
+    padding: 13px 41px;
+        min-width: 148px;
+        font-size: 16px;
+    }
+}
