@@ -1,3 +1,6 @@
+const URL = 'https://api.themoviedb.org/3';
+const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
+
 const backdropRef = document.querySelector('.backdrop');
 const galleryRef = document.querySelector('.gallery');
 
