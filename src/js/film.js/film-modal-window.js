@@ -41,6 +41,7 @@ function renderModalWindow({
   popularity,
   genres,
   overview,
+  id
 }) {
   const vote = vote_average.toFixed(1);
   const populary = popularity.toFixed(1);
@@ -70,8 +71,8 @@ function renderModalWindow({
       <h4 class="content-title">ABOUT</h4>
       <p class="content-desc">${overview}</p>
       <div class="btn-wrap">
-        <button type="button">add to watched</button>
-        <button type="button">add to queue</button>
+        <button type="button" data-add="watched" data-id="${id}">add to watched</button>
+        <button type="button" data-add="queue" data-id="${id}">add to queue</button>
       </div>
     </div>
         </div>
