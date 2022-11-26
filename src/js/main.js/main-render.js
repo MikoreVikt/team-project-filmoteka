@@ -4,7 +4,7 @@ const URL = 'https://api.themoviedb.org/3';
 const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 let page = 1;
 
-async function createGallery() {
+export async function createGallery() {
   try {
     const genresArray = await fetchGenres().then(data => data.genres);
     const filmsArray = await fetchAPI(page).then(data => data.results);
@@ -62,7 +62,7 @@ function markupCard(filmsArray) {
   galleryRef.innerHTML = markup;
 }
 
-export function createGenres(films, genres) {
+function createGenres(films, genres) {
   films.forEach(film => {
     const names = film.genre_ids.map(id => {
       const genreObj = genres.find(genre => genre.id === id);
