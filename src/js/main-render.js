@@ -5,10 +5,14 @@ const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 let page = 1;
 
 async function createGallery() {
-  const genresArray = await fetchGenres().then(data => data.genres);
-  const filmsArray = await fetchAPI(page).then(data => data.results);
-  createGenres(filmsArray, genresArray);
-  markupCard(filmsArray);
+  try {
+    const genresArray = await fetchGenres().then(data => data.genres);
+    const filmsArray = await fetchAPI(page).then(data => data.results);
+    createGenres(filmsArray, genresArray);
+    markupCard(filmsArray);
+  } catch (error) {
+    createError();
+  }
 }
 
 createGallery();
@@ -61,7 +65,9 @@ function markupCard(filmsArray) {
 function createGenres(films, genres) {
   films.forEach(film => {
     const names = film.genre_ids.map(id => {
-      return genres.find(genre => genre.id === id).name;
+      const genreObj = genres.find(genre => genre.id === id);
+
+      return genreObj ? genreObj.name : 'Unknown';
     });
 
     film.genre_name =
@@ -69,4 +75,12 @@ function createGenres(films, genres) {
         ? names.join(', ')
         : `${names[0]}, ${names[1]}, Others...`;
   });
+}
+
+function createError() {
+  galleryRef.innerHTML = `
+  <section>
+      <p>Error</p>
+      <p>Oops, something went wrong. Please try again later.</p>
+    </section>`;
 }
