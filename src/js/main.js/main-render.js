@@ -62,7 +62,7 @@ function markupCard(filmsArray) {
   galleryRef.innerHTML = markup;
 }
 
-function createGenres(films, genres) {
+export function createGenres(films, genres) {
   films.forEach(film => {
     const names = film.genre_ids.map(id => {
       const genreObj = genres.find(genre => genre.id === id);
