@@ -1,56 +1,73 @@
 .header {
-   width: 100vw;
+    width: 100vw;
     z-index: 11;
-    position: fixed;
     top: 0;
-    background-color: cadetblue;
     
-    // background-image: url();
-    // background-image: url();
-    
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
+    background-image: url('/src/images/header_1 page/header_1x_320px(home).jpg');
     
+        // Для ретіна екранів(мобільний)
+    
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('/src/images/header_1 page/header_2x_320px(home).jpg');npm :start
+        }
+    
+        @media screen and (min-width: 768px) {
+            background-image: url('/src/images/header_1 page/header_1x_768px(home).jpg');
+    
+            // Для ретіна екранів(планшет)
+    
+        //     @media (min-device-pixel-ratio: 2),
+        //     (-webkit-min-device-pixel-ratio: 2),
+        //     (min-resolution: 192dpi),
+        //     (min-resolution: 2dppx) {
+        //         background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4),
+        //                 rgba(47, 48, 58, 0.4)), url(../images/hero/img_md@2x.jpg);
+        //     }
+        // }
+    
+        // @media screen and (min-width: 1200px) {
+        //     background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4),
+        //             rgba(47, 48, 58, 0.4)), url(../images/hero/img_lg.jpg);
+    
+    
+            // Для ретіна екранів(десктоп)
+    
+        //     @media (min-device-pixel-ratio: 2),
+        //     (-webkit-min-device-pixel-ratio: 2),
+        //     (min-resolution: 192dpi),
+        //     (min-resolution: 2dppx) {
+        //         background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4),
+        //                 rgba(47, 48, 58, 0.4)), url(../images/hero/img_lg@2x.jpg);
+        //     }
+        // }
+    
+        // @media screen and (min-width: 1200px) {
+        //     padding: 200px 0;
+        // }
 }
 
 // .header-container {
 
 // }
 
-/* Поле зверху 10px, зліва і справа по 20px, знизу 5px */
-// padding: 40px 20px 44px;
 
-.container {
-    margin: 0 auto;
-    // padding: 0 20px;
-    padding: 40px 20px 44px;
 
-    @media screen and (min-width: 320px) {
-        width: 320px;
-    }
-
-    @media screen and (min-width: 768px) {
-        width: 768px;
-
-        padding-left: 32px;
-        padding-right: 32px;
-    }
-
-    @media screen and (min-width: 1280px) {
-        width: 1280px;
-    }
-}
 
 .main-header {
 
     display: flex;
-        align-items: center;
-     justify-content: space-between;
-        margin-bottom: 54px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 54px;
     
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: $tablet) {
             margin-bottom: 40px;
         }
 }
@@ -283,3 +300,4 @@
 
 
 
+}
