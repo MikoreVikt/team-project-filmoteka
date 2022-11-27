@@ -1,7 +1,114 @@
+
+.header-library {
+    width: 100vw;
+    z-index: 11;
+ 
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    background-image: url('/src/images/header_1 page/header_1x_320px(home-queue).jpg');
+
+    // Для ретіна екранів(мобільний)
+    
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url('/src/images/header_1 page/header_2x_320px(home-queue).jpg');
+    }
+    
+    @media (min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+        background-image: url('/src/images/header_1 page/header_3x_320px(home-queue).jpg');
+    }
+    
+    
+    @media screen and (min-width: 768px) {
+    
+        background-image: url('/src/images/header_1 page/header_1x_768px(home-warning).jpg');
+    
+        // Для ретіна екранів(планшет)
+    
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('/src/images/header_1 page/header_2x_768px(home-warning).jpg');
+        }
+    
+        @media (min-device-pixel-ratio: 3),
+            (min-resolution: 288dpi),
+            (min-resolution: 3dppx) {
+                background-image: url('/src/images/header_1 page/header_3x_768px(home-warning).jpg');
+            }
+        }
+    
+        @media screen and (min-width: 1200px) {
+    
+            background-image: url('/src/images/header_1 page/header_1x_1280px(watched).jpg');
+    
+    
+            // Для ретіна екранів(десктоп)
+    
+            @media (min-device-pixel-ratio: 2),
+            (-webkit-min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi),
+            (min-resolution: 2dppx) {
+                background-image: url('/src/images/header_1 page/header_2x_1280px(watched).jpg');
+            }
+    
+            @media (min-device-pixel-ratio: 3),
+            (min-resolution: 288dpi),
+            (min-resolution: 3dppx) {
+                background-image: url('/src/images/header_1 page/header_3x_1280px(watched).jpg');
+            }
+        }
+}
+
 .btn-list {
     display: flex;
     justify-content: center;
-        align-items: center;
-        column-gap: 16px
+    align-items: center;
+    column-gap: 16px
+}
+
+
+
+.button {
+
+    padding: 13px 36px;
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    min-width: 130px;
+
+    font-family: inherit;
+    color: var(--white-color);
+    background-color: transparent;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.83;
+    align-items: center;
+    text-align: center;
+
+
+    @media screen and (min-width: 768px) {
+        padding: 13px 46px;
+        min-width: 152px;
+        font-size: 16px;
+    }
+
+    @media screen and (min-width: 1200px) {
+        padding: 13px 41px;
+        min-width: 148px;
+        font-size: 16px;
+    }
 }
 
