@@ -5,17 +5,19 @@
   padding: 20px;
 
   @media screen and (min-width: 320px) {
-    max-width: 480px;
-    padding: 0 20px;
+    max-width: 320px;
+    padding: 20px;
+    padding-bottom: 0px;
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 768;
-    padding: 0 32px;
+    max-width: 768px;
+    padding: 59px 32px 0px;
   }
 
   @media screen and (min-width: 1280px) {
     max-width: 1280px;
+    padding: 60px 32px 0px;
   }
 }
 /* Cards start */
@@ -31,14 +33,12 @@
 
 .gallery {
   --indent: 20px;
-  margin-bottom: 53px;
+
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     --indent: 32px;
-    margin-bottom: 73px;
   }
   @media screen and (min-width: $desktop) {
     --indent: 16px;
-    margin-bottom: 73px;
   }
 }
 .gallery__item {
@@ -47,28 +47,40 @@
   --item: 1;
 
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
-    display: flex;
     --item: 2;
   }
   @media screen and (min-width: $desktop) {
     --item: 3;
+    margin-bottom: 16px;
   }
-  //   &:hover {
-  //     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  //     transform: scale(1.1);
-  //     transition: var(--anim-standart);
-  //   }
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transform: scale(1.05);
+    transition: var(--anim-standart);
+  }
 }
-img {
-  width: 100%;
+.gallery__img {
+  object-fit: cover;
 }
+.img-wrap {
+  height: 402px;
+  @media screen and (min-width: $tablet) {
+    height: 455px;
+  }
+  @media screen and (min-width: $desktop) {
+    height: 574px;
+  }
+}
+
 .gallary-wrapper {
   margin-top: 10px;
+
   @media screen and (min-width: $tablet) {
     margin-top: 8px;
   }
   @media screen and (min-width: $desktop) {
     margin-top: 12px;
+    padding-bottom: 5px;
   }
 }
 .gallery__title {
@@ -86,7 +98,7 @@ img {
   font-weight: 500px;
   font-size: 12px;
   line-height: 1.33;
-  color: #ff6b08;
+  color: var(--orange-color);
   @media screen and (min-width: $desktop) {
     font-size: 20px;
     line-height: 1.2;
