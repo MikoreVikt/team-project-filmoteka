@@ -46,7 +46,7 @@ function markupCard(filmsArray) {
       <li class="gallery__item card-set">
         <a class="link" href="">
             <img class="gallery__img" data-id="${id}" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${title}" loading="lazy" />
-            <div>
+            <div class="gallary-wrapper">
                 <h2 class="gallery__title">${title}</h2>
                 <div class="gallery__wrap">
                     <p class="gallery__ganres">${genre_name} | ${date}</p>
@@ -71,9 +71,7 @@ function createGenres(films, genres) {
     });
 
     film.genre_name =
-      names.length < 3
-        ? names.join(', ')
-        : `${names[0]}, ${names[1]}, Others...`;
+      names.length < 3 ? names.join(', ') : `${names[0]}, ${names[1]}, Other`;
   });
 }
 
