@@ -55,7 +55,7 @@ function renderModalWindow({
           </button>
           <img src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}" />
     <div class="content-wrapper">
-      <h3 class="modal-title">${original_title}</h3>
+      <h3 class="modal-title" data-id="${id}">${original_title}</h3>
       <div class="container-text">
         <p class="content-text">Vote / Votes</p>
         <p class="content-text">Popularity</p>
@@ -63,16 +63,16 @@ function renderModalWindow({
         <p class="content-text">Genre</p>
       </div>
       <div class="container-values">
-        <p class="content-values">${vote} / ${vote_count}</p>
-        <p class="content-values">${populary}</p>
+        <p class="content-values" data-vote>${vote} / ${vote_count}</p>
+        <p class="content-values" data-populary>${populary}</p>
         <p class="content-values">${original_title}</p>
-        <p class="content-values">${genre}</p>
+        <p class="content-values" data-genre>${genre}</p>
       </div>
       <h4 class="content-title">ABOUT</h4>
-      <p class="content-desc">${overview}</p>
+      <p class="content-desc" data-overview>${overview}</p>
       <div class="btn-wrap">
-        <button type="button" data-add="watched" data-id="${id}">add to watched</button>
-        <button type="button" data-add="queue" data-id="${id}">add to queue</button>
+        <button type="button" data-add="watched">add to watched</button>
+        <button type="button" data-add="queue">add to queue</button>
       </div>
     </div>
         </div>
