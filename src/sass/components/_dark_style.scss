@@ -1,0 +1,21 @@
+html.dark,
+.dark body,
+.dark .modal__container,
+.dark .modal-title,
+.dark .movie__text,
+.dark .movie__title,
+.dark .content-values {
+  // font-size: 18px;
+  // font-family: sans-serif;
+  background: #2e3238;
+  color: #fff;
+
+  .menu__btn {
+    color: #fff;
+  }
+}
+
+.menu__btn {
+  color: #696a6b;
+  margin-right: 20px;
+}
