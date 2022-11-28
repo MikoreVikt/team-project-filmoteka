@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 const LOCAL_STORGE_WATCHED = 'local-storage-watched';
 const LOCAL_STORGE_QUEUE = 'local-storage-queue';
 
@@ -46,6 +48,7 @@ function saveToLocalStorage(type){
 function checkData(savedData, film){
     for(let obj in savedData){
         if(savedData[obj].data.some(d => d.id === film.id)){
+            Notiflix.Notify.warning('This film is already in your libruary ' + obj);
             return true;
         }
     }
