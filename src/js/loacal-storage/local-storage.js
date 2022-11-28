@@ -17,9 +17,8 @@ function saveToLocalStorage(type){
         id: parseInt(modal.querySelector('[data-id]').dataset.id),
         src: modal.querySelector('img').src,
         alt: modal.querySelector('img').alt,
-        vote: modal.querySelector('[data-vote]').textContent,
-        populary: modal.querySelector('[data-populary]').textContent,
-        overview: modal.querySelector('[data-overview]').textContent,
+        vote: modal.querySelector('[data-vote]').dataset.vote,
+        date: modal.querySelector('[data-date]').dataset.date.slice(0, 4),
         genre: modal.querySelector('[data-genre]').textContent
     }
 
