@@ -7,6 +7,8 @@
     background-size: cover;
     background-position: center;
 
+    // transition: transform var(--anim-standart);
+
     background-image: url('/src/images/header_1 page/header_1x_320px(home).jpg');
 
     // Для ретіна екранів(мобільний)
@@ -103,18 +105,8 @@
     @media screen and (max-width: 767px) {
         display: none;
     }
-        
-}
 
-.icon-logo {
-    stroke: var(--white-color);
-    &:hover,
-        &:focus {
-            color: var(--red-color);
-    
-        }
 }
-
 
 
 .current {
@@ -135,7 +127,6 @@
 
 }
 
-
 .nav-list {
     display: flex;
     align-items: center;
@@ -146,22 +137,25 @@
 }
 
 .nav-item {
+ 
+    transition: transform var(--anim-standart);
 
     &:hover,
     &:focus {
-        color: var(--bg-orange-color);
-
+        transform: scale(1.3);
 
     }
 }
 
 .nav-link {
     color: var(--white-color);
+    transition: color var(--anim-standart);
 
 
     &:hover,
     &:focus {
         color: var(--red-color);
+
     }
 }
 
@@ -173,6 +167,8 @@
     margin: 0 auto;
     max-width: 280px;
 
+    transition: transform var(--anim-standart);
+
     @media screen and (min-width: $tablet) {
         max-width: 336px;
     }
@@ -181,7 +177,7 @@
         max-width: 394px;
     }
 
-    // transition: transform var(--anim-standart);
+
 
 }
 
@@ -211,6 +207,7 @@
     &:hover,
     &:focus {
         border-color: var(--red-color);
+        transition: border-color var(--anim-standart);
 
     }
 
@@ -229,12 +226,13 @@
 
     &:hover,
     &:focus {
-        stroke: var(--bg-orange-color);
-        transform: scale(1.2);
+        transform: scale(1.5) rotate(360deg);
     }
 
-
+    transition: stroke var(--anim-standart);
+    transition: transform var(--anim-standart);
 }
+
 
 .icon-input {
     position: absolute;
