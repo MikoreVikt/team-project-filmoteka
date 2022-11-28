@@ -23,6 +23,7 @@
   border-top-color: #7449f5;
   border-radius: 50%;
   animation: loading 0.75s ease infinite;
+  transition-delay: 1s, 1s;
 }
 
 @keyframes loading {
