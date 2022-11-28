@@ -220,11 +220,11 @@
 .form-button {
     position: absolute;
     right: 0;
-
     width: 18px;
     height: 18px;
     border: none;
     stroke: var(--white-color);
+    background-color: transparent;
     transform: scale(1);
 
     &:hover,
@@ -241,6 +241,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
 }
 
 .message-error {
