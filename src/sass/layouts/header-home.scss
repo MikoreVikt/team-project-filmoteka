@@ -226,8 +226,7 @@
 
     &:hover,
     &:focus {
-        stroke: var(--red-color);
-        transform: scale(1.5);
+        transform: scale(1.5) rotate(360deg);
     }
 
     transition: stroke var(--anim-standart);
