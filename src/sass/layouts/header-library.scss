@@ -1,8 +1,7 @@
-
 .header-library {
     width: 100vw;
     z-index: 11;
- 
+
 
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,61 +10,61 @@
     background-image: url('/src/images/header_1 page/header_1x_320px(home-queue).jpg');
 
     // Для ретіна екранів(мобільний)
-    
+
     @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
         background-image: url('/src/images/header_1 page/header_2x_320px(home-queue).jpg');
     }
-    
+
     @media (min-device-pixel-ratio: 3),
     (min-resolution: 288dpi),
     (min-resolution: 3dppx) {
         background-image: url('/src/images/header_1 page/header_3x_320px(home-queue).jpg');
     }
-    
-    
+
+
     @media screen and (min-width: 768px) {
-    
+
         background-image: url('/src/images/header_1 page/header_1x_768px(home-warning).jpg');
-    
+
         // Для ретіна екранів(планшет)
-    
+
         @media (min-device-pixel-ratio: 2),
         (-webkit-min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
         (min-resolution: 2dppx) {
             background-image: url('/src/images/header_1 page/header_2x_768px(home-warning).jpg');
         }
-    
+
         @media (min-device-pixel-ratio: 3),
-            (min-resolution: 288dpi),
-            (min-resolution: 3dppx) {
-                background-image: url('/src/images/header_1 page/header_3x_768px(home-warning).jpg');
-            }
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            background-image: url('/src/images/header_1 page/header_3x_768px(home-warning).jpg');
         }
-    
-        @media screen and (min-width: 1200px) {
-    
-            background-image: url('/src/images/header_1 page/header_1x_1280px(watched).jpg');
-    
-    
-            // Для ретіна екранів(десктоп)
-    
-            @media (min-device-pixel-ratio: 2),
-            (-webkit-min-device-pixel-ratio: 2),
-            (min-resolution: 192dpi),
-            (min-resolution: 2dppx) {
-                background-image: url('/src/images/header_1 page/header_2x_1280px(watched).jpg');
-            }
-    
-            @media (min-device-pixel-ratio: 3),
-            (min-resolution: 288dpi),
-            (min-resolution: 3dppx) {
-                background-image: url('/src/images/header_1 page/header_3x_1280px(watched).jpg');
-            }
+    }
+
+    @media screen and (min-width: 1200px) {
+
+        background-image: url('/src/images/header_1 page/header_1x_1280px(watched).jpg');
+
+
+        // Для ретіна екранів(десктоп)
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('/src/images/header_1 page/header_2x_1280px(watched).jpg');
         }
+
+        @media (min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            background-image: url('/src/images/header_1 page/header_3x_1280px(watched).jpg');
+        }
+    }
 }
 
 .btn-list {
@@ -76,39 +75,36 @@
 }
 
 
-
 .button {
+    width: 130px;
+    height: 44px;
+    font-size: 16px;
 
-    padding: 13px 36px;
-    display: inline-block;
-    border: 1px solid #fff;
-    border-radius: 5px;
     text-transform: uppercase;
-    min-width: 130px;
 
-    font-family: inherit;
     color: var(--white-color);
-    background-color: transparent;
-    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+    background: rgba(0, 0, 0, 0.56);
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
 
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.83;
-    align-items: center;
-    text-align: center;
+    &:hover {
+        background-color: var(--bg-orange-color);
+        box-shadow: 0px 8px 43px #fff;
+        border: none;
+        transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-
-    @media screen and (min-width: 768px) {
-        padding: 13px 46px;
+    @media screen and (min-width: $tablet) {
         min-width: 152px;
-        font-size: 16px;
     }
-
-    @media screen and (min-width: 1200px) {
-        padding: 13px 41px;
+    
+    @media screen and (min-width: $desktop) {
         min-width: 148px;
-        font-size: 16px;
-    }
+   }
 }
 
+.button.btn-add__active {
+    background-color: var(--bg-orange-color);
+    color:var(--white-color);
+    border-color: var(--bg-orange-color);
+}
