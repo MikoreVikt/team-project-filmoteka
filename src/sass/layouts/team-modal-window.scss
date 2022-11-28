@@ -58,7 +58,7 @@
 
   @media screen and (min-width: 1200px) {
     // max-width: 528px;
-    max-width: 970px;
+    max-width: 800px;
   }
 }
 .btn-team-modal--close {
@@ -100,6 +100,7 @@
 
 .team-card {
   width: 150px;
+  height: fit-content;
   //   outline: 1px solid red;
   background-color: var(--bg-grey-color);
   padding: 5px;
@@ -117,6 +118,7 @@
 .team-photo {
   margin: 0 auto;
   border-radius: 50%;
+  object-fit: contain;
 }
 .team-title {
   margin: 10px 0;
@@ -156,25 +158,19 @@
   /* or 133% */
 
   color: var(--black-color);
+  background-color: var(--main-text-second-color);
+  border-radius: 2px;
+  fill: var(--white-color);
 }
-.team-social-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--grey-text-color);
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  color: var(--white-color);
-
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.team-social-link:hover,
-.team-social-link:focus {
-  background-color: var(--bg-orange-color);
-}
+// .team-social-link {
+// }
 
 .team-social-icon {
   fill: var(--white-color);
+  background-color: var(--main-text-second-color);
+}
+
+.team-social-item:focus,
+.team-social-item:hover {
+  background-color: var(--bg-orange-color);
 }
