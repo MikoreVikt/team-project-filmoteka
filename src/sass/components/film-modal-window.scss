@@ -245,3 +245,34 @@
     outline: transparent;
   }
 }
+
+.button-trailer {
+  cursor: pointer;
+  border: 1px solid var(--black-color);
+  border-radius: 5px;
+  width: 110px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--black-color);
+  background-color: var(--white-color);
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    outline: transparent;
+  }
+  
+  @media screen and (min-width: 320px) {
+    max-width: 110px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    max-width: 215px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    max-width: 325px;
+  }
+}

@@ -18,8 +18,11 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
+    "@vimeo/player": "^2.18.0",
     "axios": "^1.2.0",
+    "basiclightbox": "^5.0.4",
     "modern-normalize": "^1.1.0",
+    "movie-trailer": "^2.1.0",
     "notiflix": "^3.2.5"
   },
   "devDependencies": {

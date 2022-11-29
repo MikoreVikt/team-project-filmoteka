@@ -101,7 +101,6 @@ function renderModalWindow({
         <li class="content-text">Genre</li>
         <li class="content-values" data-genre ><b>${genre}</b></li>
       </ul>
-
     
       </div>
       <div class="movie">
@@ -111,6 +110,7 @@ function renderModalWindow({
       <div class="btn-wrap">
         <button type="button" class="button-watched" data-add="watched" >add to watched</button>
         <button type="button" class="button-queue" data-add="queue" >add to queue</button>
+        <button type="button" class="button-trailer" data-id={{id}} data-name={{title}} >watch trailer</button>
       </div>
     </div>
     </div>
