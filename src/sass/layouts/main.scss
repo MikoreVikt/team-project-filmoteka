@@ -45,6 +45,7 @@
   border-radius: 5px;
   overflow: hidden;
   --item: 1;
+  transition: box-shadow var(--anim-standart), transform var(--anim-standart);
 
   @media screen and (min-width: $tablet) and (max-width: 1279px) {
     --item: 2;
@@ -56,7 +57,6 @@
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transform: scale(1.05);
-    transition: var(--anim-standart);
   }
 }
 .gallery__img {
@@ -107,6 +107,9 @@
 .gallery__wrap {
   display: flex;
   align-items: baseline;
+  @media screen and (min-width: $desktop) {
+    align-items: center;
+  }
 }
 .gallery__rating {
   margin-left: 10px;
