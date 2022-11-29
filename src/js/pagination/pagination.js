@@ -16,48 +16,43 @@ getEl('[data-index="5"]').addEventListener('click', onBtnClick);
 getEl('.first-button').addEventListener('click', function () {
   currentPage = 1;
   render(currentPage);
-
-  createGallery(page).then(data =>{
-    
-    page = currentPage;
-    page = 1;
-  }).catch(error => console.log(error))
+  page = 1;
+  createGallery(page);
 });
-
 
 getEl('.last-button').addEventListener('click', function () {
   currentPage = maxPage;
   render(currentPage);
+  page = currentPage;
+  createGallery(page);
 });
 
 getEl('.arrow-right').addEventListener('click', function () {
   currentPage += 1;
   render(currentPage);
-
-  createGallery(page).then(data =>{
-    page = currentPage;
-    page += 1;
-    console.log(page);
-  }).catch(error => console.log(error));
+  page = currentPage;
+  page += 1;
+  createGallery(page);
 });
 
 getEl('.arrow-left').addEventListener('click', function () {
   currentPage -= 1;
   render(currentPage);
-
-  createGallery(page).then(data =>{
-    page = currentPage;
-    page -= 1;
-  }).catch(error => console.log(error));
+  page = currentPage;
+  page -= 1;
+  createGallery(page);
 });
 
 function onBtnClick(event) {
   currentPage = Number(event.target.textContent);
   render(currentPage);
+  page = currentPage;
+  createGallery(page);
+}
 
-  createGallery(page).then(data =>{
-    page = currentPage;
-  }).catch(error => console.log(error))
+function firstPage() {
+  currentPage = 1;
+  render(currentPage);
 }
 
 let btns = document.querySelectorAll('.pagination__btn');
@@ -65,7 +60,7 @@ let btns = document.querySelectorAll('.pagination__btn');
 function render(pageNumber) {
   let startPage = Math.max(1, pageNumber - pageCount);
   let pagesList = [];
-
+  // console.log(pageNumber);
   if (startPage + pageCount * 2 > maxPage) {
     startPage = maxPage - pageCount * 2;
   }
@@ -99,4 +94,3 @@ function render(pageNumber) {
 }
 
 window.render = render;
-
