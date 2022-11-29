@@ -4,7 +4,6 @@ let getEl = selector => document.querySelector(selector);
 let currentPage = 1;
 let maxPage = 100;
 let pageCount = 2;
-let page = 1;
 
 getEl('.gallery');
 getEl('[data-index="1"]').addEventListener('click', onBtnClick);
@@ -16,38 +15,36 @@ getEl('[data-index="5"]').addEventListener('click', onBtnClick);
 getEl('.first-button').addEventListener('click', function () {
   currentPage = 1;
   render(currentPage);
-  page = 1;
-  createGallery(page);
+
+  createGallery(currentPage);
 });
 
 getEl('.last-button').addEventListener('click', function () {
   currentPage = maxPage;
   render(currentPage);
-  page = currentPage;
-  createGallery(page);
+
+  createGallery(currentPage);
 });
 
 getEl('.arrow-right').addEventListener('click', function () {
   currentPage += 1;
   render(currentPage);
-  page = currentPage;
-  page += 1;
-  createGallery(page);
+
+  createGallery(currentPage);
 });
 
 getEl('.arrow-left').addEventListener('click', function () {
   currentPage -= 1;
   render(currentPage);
-  page = currentPage;
-  page -= 1;
-  createGallery(page);
+
+  createGallery(currentPage);
 });
 
 function onBtnClick(event) {
   currentPage = Number(event.target.textContent);
   render(currentPage);
-  page = currentPage;
-  createGallery(page);
+
+  createGallery(currentPage);
 }
 
 function firstPage() {
@@ -94,3 +91,5 @@ function render(pageNumber) {
 }
 
 window.render = render;
+
+firstPage();
