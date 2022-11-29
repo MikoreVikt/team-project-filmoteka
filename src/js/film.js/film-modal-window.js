@@ -53,7 +53,6 @@ function renderModalWindow({
   genres,
   overview,
   id,
-  release_date
 }) {
   const vote = vote_average.toFixed(1);
   const populary = popularity.toFixed(1);
