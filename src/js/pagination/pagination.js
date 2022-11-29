@@ -1,12 +1,10 @@
 import { createGallery } from '../main.js/main-render';
-
 let getEl = selector => document.querySelector(selector);
-
-console.log(createGallery());
 
 let currentPage = 1;
 let maxPage = 100;
 let pageCount = 2;
+let page = 1;
 
 getEl('.gallery');
 getEl('[data-index="1"]').addEventListener('click', onBtnClick);
@@ -18,7 +16,14 @@ getEl('[data-index="5"]').addEventListener('click', onBtnClick);
 getEl('.first-button').addEventListener('click', function () {
   currentPage = 1;
   render(currentPage);
+
+  createGallery(page).then(data =>{
+    
+    page = currentPage;
+    page = 1;
+  }).catch(error => console.log(error))
 });
+
 
 getEl('.last-button').addEventListener('click', function () {
   currentPage = maxPage;
@@ -28,21 +33,31 @@ getEl('.last-button').addEventListener('click', function () {
 getEl('.arrow-right').addEventListener('click', function () {
   currentPage += 1;
   render(currentPage);
+
+  createGallery(page).then(data =>{
+    page = currentPage;
+    page += 1;
+    console.log(page);
+  }).catch(error => console.log(error));
 });
 
 getEl('.arrow-left').addEventListener('click', function () {
   currentPage -= 1;
   render(currentPage);
+
+  createGallery(page).then(data =>{
+    page = currentPage;
+    page -= 1;
+  }).catch(error => console.log(error));
 });
 
 function onBtnClick(event) {
   currentPage = Number(event.target.textContent);
   render(currentPage);
-}
 
-function firstPage() {
-  currentPage = 1;
-  render(currentPage);
+  createGallery(page).then(data =>{
+    page = currentPage;
+  }).catch(error => console.log(error))
 }
 
 let btns = document.querySelectorAll('.pagination__btn');
