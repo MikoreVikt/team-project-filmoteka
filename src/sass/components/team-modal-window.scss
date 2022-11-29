@@ -75,7 +75,7 @@
 
   background-color: var(--bg-ft-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+  border-radius: 2px;
 
   cursor: pointer;
 
@@ -162,19 +162,26 @@
   justify-content: center;
   align-items: center;
   background-color: var(--grey-text-color);
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  border-radius: 2px;
   color: var(--white-color);
+  // color: currentColor;
+  stroke: var(--white-color);
+  fill: var(--white-color);
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--anim-standart);
 }
 
 .team-social-link:hover,
 .team-social-link:focus {
+  transform: scale(1.05);
   background-color: var(--bg-orange-color);
 }
 
 .team-social-icon {
+  stroke: var(--white-color);
   fill: var(--white-color);
+  // fill: inherit;
 }
