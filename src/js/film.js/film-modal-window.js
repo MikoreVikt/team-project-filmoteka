@@ -1,19 +1,10 @@
-const URL = 'https://api.themoviedb.org/3';
-const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
+import getRefs from './get-refs';
+import { fetchId } from './fetch-id';
 
-const refs = {
-  backdrop: document.querySelector('.backdrop'),
-  gallery: document.querySelector('.gallery'),
-  closeBtn: document.querySelector('[data-close="close"]'),
-  filmModal: document.querySelector('.modal'),
-  body: document.querySelector('body'),
-};
-
+const refs = getRefs();
 refs.gallery.addEventListener('click', onPosterClick);
-refs.closeBtn.addEventListener('click', toggleModal);
-document.addEventListener('keydown', onEscKeyPress);
-
-let markupModal;
+refs.closeBtn.addEventListener('click', onCloseModal);
+refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onPosterClick(e) {
   e.preventDefault();
@@ -21,19 +12,26 @@ function onPosterClick(e) {
     return;
   }
   const idValue = e.target.dataset.id;
-
   fetchId(idValue).then(renderModalWindow);
-  toggleModal();
+  onOpenModal();
 }
 
-function fetchId(id) {
-  return fetch(`${URL}/movie/${id}?api_key=${API_KEY}
-`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
+function onOpenModal() {
+  window.addEventListener('keydown', onEscKeyPress);
+  refs.backdrop.classList.remove('is-hidden');
+  document.body.classList.add('no-scroll');
+}
+
+function onCloseModal() {
+  window.removeEventListener('keydown', onEscKeyPress);
+  refs.backdrop.classList.add('is-hidden');
+  document.body.classList.remove('no-scroll');
+}
+
+function onBackdropClick(event) {
+  if (event.currentTarget === event.target) {
+    onCloseModal();
+  }
 }
 
 function onEscKeyPress(event) {
@@ -41,26 +39,8 @@ function onEscKeyPress(event) {
   const isEscKey = event.code === ESC_KEY_CODE;
 
   if (isEscKey) {
-    toggleModal();
+    onCloseModal();
   }
-}
-
-function isFilmModalOpen() {
-  evt.preventDefault();
-  refs.filmModal.classList.remove('is-hidden');
-  refs.body.classList.add('no-scroll');
-  renderModalWindow();
-}
-
-// function isFilmModalClose() {
-//   refs.filmModal.classList.add('is-hidden');
-//   refs.body.classList.remove('no-scroll');
-// }
-// window.removeEventListener('keydown', onEscKeyPress);
-
-function toggleModal() {
-  refs.backdrop.classList.toggle('is-hidden');
-  document.body.classList.toggle('no-scroll');
 }
 
 function renderModalWindow({
@@ -68,6 +48,7 @@ function renderModalWindow({
   original_title,
   vote_average,
   vote_count,
+  release_date,
   popularity,
   genres,
   overview,
@@ -79,21 +60,22 @@ function renderModalWindow({
   const genre = genres.map(obj => obj.name).join(', ');
 
   const markupModal = `
-        <div class="modal__container">  
+        <div class="modal__container">
         <div class="poster-container">
   <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}"/>
-    </div>  
+    </div>
     <div class="movie-container">
       <h3 class="modal-title" data-id="${id}">${original_title}</h3>
       <div class="content-wrapper">
       <ul class="container-text">
         <li class="content-text">Vote / Votes</li>
-        <li class="content-values" data-vote="${vote}"><span class="vote-item"><b>${vote}</span><span class="slash">/</span> ${vote_count}</b></li>
+        <li class="content-values" data-vote="${vote}"><span class="vote-item"><b>${vote}</span><span class="slash">/</span><span class="vote-count"> ${vote_count}</b></span></li>
         </ul>
         <ul class="container-text">
         <li class="content-text">Popularity</li>
         <li class="content-values" data-date="${release_date}" ><b>${populary}</b></li>
         </ul>
+    
         <ul class="container-text">
         <li class="content-text">Original Title</li>
         <li class="content-values"><b>${original_title}</b></li>
@@ -103,7 +85,6 @@ function renderModalWindow({
         <li class="content-values" data-genre ><b>${genre}</b></li>
       </ul>
 
-    
       </div>
       <div class="movie">
       <h4 class="movie__title">ABOUT</h4>
