@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 const LOCAL_STORGE_WATCHED = 'local-storage-watched';
 const LOCAL_STORGE_QUEUE = 'local-storage-queue';
 
@@ -17,9 +19,8 @@ function saveToLocalStorage(type){
         id: parseInt(modal.querySelector('[data-id]').dataset.id),
         src: modal.querySelector('img').src,
         alt: modal.querySelector('img').alt,
-        vote: modal.querySelector('[data-vote]').textContent,
-        populary: modal.querySelector('[data-populary]').textContent,
-        overview: modal.querySelector('[data-overview]').textContent,
+        vote: modal.querySelector('[data-vote]').dataset.vote,
+        date: modal.querySelector('[data-date]').dataset.date.slice(0, 4),
         genre: modal.querySelector('[data-genre]').textContent
     }
 
@@ -42,11 +43,13 @@ function saveToLocalStorage(type){
     const data = local[type].data;
 
     save(key, [...data, film]);
+    Notiflix.Notify.success('This film added to your ' + type + ' library')
 }
 
 function checkData(savedData, film){
     for(let obj in savedData){
         if(savedData[obj].data.some(d => d.id === film.id)){
+            Notiflix.Notify.warning('This film is already in your library ' + obj);
             return true;
         }
     }

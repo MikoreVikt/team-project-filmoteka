@@ -72,6 +72,7 @@ function renderModalWindow({
   genres,
   overview,
   id,
+  release_date
 }) {
   const vote = vote_average.toFixed(1);
   const populary = popularity.toFixed(1);
@@ -87,11 +88,11 @@ function renderModalWindow({
       <div class="content-wrapper">
       <ul class="container-text">
         <li class="content-text">Vote / Votes</li>
-        <li class="content-values" data-vote><span class="vote-item"><b>${vote}</span><span class="slash">/</span> ${vote_count}</b></li>
+        <li class="content-values" data-vote="${vote}"><span class="vote-item"><b>${vote}</span><span class="slash">/</span> ${vote_count}</b></li>
         </ul>
         <ul class="container-text">
         <li class="content-text">Popularity</li>
-        <li class="content-values" data-populary ><b>${populary}</b></li>
+        <li class="content-values" data-date="${release_date}" ><b>${populary}</b></li>
         </ul>
         <ul class="container-text">
         <li class="content-text">Original Title</li>
