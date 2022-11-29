@@ -6,7 +6,7 @@ const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 let page = 1;
 export let imgHttps = 'https://image.tmdb.org/t/p/w500/';
 
-export async function createGallery() {
+export async function createGallery(page) {
   try {
     const genresArray = await fetchGenres().then(data => data.genres);
     const filmsArray = await fetchAPI(page).then(data => data.results);
@@ -18,7 +18,7 @@ export async function createGallery() {
   }
 }
 
-createGallery();
+createGallery(page);
 
 function fetchAPI(page) {
   return fetch(`${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}
