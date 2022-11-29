@@ -1,13 +1,12 @@
 const students = [
   {
-    name: 'Антон </br>',
+    name: 'Антон </br> Ткаченко',
     role: 'Team Lead',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
+    photo: './images/team-modal-window/Tkachenko.png',
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Олександра </br>Криницька',
@@ -17,17 +16,16 @@ const students = [
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
-    name: 'Лариса </br>Хольцева',
+    name: 'Лариса </br>Гольцева',
     role: 'роль секция',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
-    facebook: 'https://www.facebook.com',
+    photo: '../images/team-modal-window/Holtseva.png',
+    facebook: 'https://www.facebook.com/larysa.holtseva.5',
     github: 'https://github.com',
-    telegram: 'https://telegram.org',
-    linkedin: '',
+    telegram: 'https://t.me/LarysaHoltseva',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Оксана </br>Пак',
@@ -37,7 +35,7 @@ const students = [
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Олексій </br>Черній',
@@ -47,7 +45,7 @@ const students = [
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Алім </br>Передерко',
@@ -57,67 +55,62 @@ const students = [
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Фелікс </br>Полканов',
     role: 'роль секция',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
+    photo: './images/team-modal-window/Polkanov.png',
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Анастасія </br>Литвин',
     role: 'роль секция',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
+    photo: './images/team-modal-window/Lytvyn.png',
     facebook: 'https://www.facebook.com',
-    github: 'https://github.com',
-    telegram: 'https://telegram.org',
-    linkedin: '',
+    github: 'hhttps://github.com/AnastasiyaLytvyn',
+    telegram: 'https://t.me/nastyalytvyn',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
-    name: 'Михайло </br>Шебуняев',
+    name: 'Михайло </br>Щебуняев',
     role: 'роль секция',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
+    photo: './images/team-modal-window/Schebyniaev.png',
     facebook: 'https://www.facebook.com/profile.php?id=100000789429082',
     github: 'https://github.com/MicRedd1985',
-    telegram: 'https://telegram.org',
-    linkedin: '',
+    telegram: 'https://t.me/MicRedd',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Альона </br> Корнієнко',
     role: 'Footer',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
-    facebook: 'https://www.facebook.com',
-    github: 'https://github.com',
-    telegram: 'https://telegram.org',
-    linkedin: '',
+    photo: './images/team-modal-window/Kornienko.png',
+    facebook: 'https://www.facebook.com/alyona.lyashenko.16',
+    github: 'https://github.com/AlyonaKorniienko',
+    telegram: 'https://t.me/mw_aliona',
+    linkedin: 'https://ua.linkedin.com/',
   },
   {
     name: 'Олександр </br>Воронцов',
     role: 'роль секция',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
+    photo: './images/team-modal-window/Vorontsov.png',
     facebook: 'https://www.facebook.com',
     github: 'https://github.com/alexandrvorontsov',
     telegram: 'https://t.me/El_Oleksandr',
     linkedin: 'https://linkedin.com/in/oleksandr-vorontsov-652782258',
   },
   {
-    name: 'Владислав </br>Белоцкий',
+    name: 'Владислав </br>Белоцький',
     role: 'роль секция',
     photo:
       'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: '',
+    linkedin: 'https://ua.linkedin.com/',
   },
 ];
 
@@ -162,44 +155,42 @@ function renderStudents() {
   const studentCard = students
     .map(
       student => `<li class="team-card">
-          <img
-            src="${student.photo}"
-            class="team-photo"
-            width="75"
-          />
-          <p class="team-title">${student.name}</p>
-          <p class="team-role">${student.role}</p>
-          <ul class="team-social">
-            <li class="team-social-item">
-              <a href="${student.facebook}" class="team-social-link">
-                <svg class="team-social-icon" width="15" height="15">
-                  <use></use>
-                </svg>
-              </a>
-            </li>
-            <li class="team-social-item">
-              <a href="${student.github}" class="team-social-link">
-                <svg class="team-social-icon" width="15" height="15">
-                  <use></use>
-                </svg>
-              </a>
-            </li>
-            <li class="team-social-item">
-              <a href="${student.telegram}" class="team-social-link">
-                <svg class="team-social-icon" width="15" height="15">
-                  <use></use>
-                </svg>
-              </a>
-            </li>
-            <li class="team-social-item">
-              <a href="${student.linkedin}" class="team-social-link">
-                <svg class="team-social-icon" width="15" height="15">
-                  <use></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </li>`
+  <div>
+    <img src="${student.photo}" class="team-photo" width="75" height="75" loading="lazy" />
+    <p class="team-title">${student.name}</p>
+    <p class="team-role">${student.role}</p>
+    <ul class="team-social">
+      <li class="team-social-item">
+        <a href="${student.facebook}" class="team-social-link">
+          <svg class="team-social-icon" width="20" height="20">
+            <use href="./images/sprite.svg#icon-facebook"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="team-social-item">
+        <a href="${student.github}" class="team-social-link">
+          <svg class="team-social-icon" width="20" height="20">
+            <use href="./images/sprite.svg#icon-github"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="team-social-item">
+        <a href="${student.telegram}" class="team-social-link">
+          <svg class="team-social-icon" width="20" height="20">
+            <use href="./images/sprite.svg#icon-telegram"></use>
+          </svg>
+        </a>
+      </li>
+      <li class="team-social-item">
+        <a href="${student.linkedin}" class="team-social-link">
+          <svg class="team-social-icon" width="20" height="20">
+            <use href="./images/sprite.svg#icon-telegram"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>`
     )
     .join('');
   refs.teamList.innerHTML = studentCard;
