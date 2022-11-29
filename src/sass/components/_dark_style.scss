@@ -10,21 +10,23 @@ html .dark,
 .dark .pagination__btn {
 
   background: #2e3238;
-  color: #fff;
+  color: var(--white-color);
 
   .menu__btn {
-    color: #fff;
+    color: var(--white-color);
   }
 
   .pagination__btn-current {
     background-color: var(--bg-orange-color);
   }
+
+  .pagination__icon {
+    fill: var(--white-color);
+  }
+
 }
 
 .menu__btn {
-  display: flex;
-  justify-content: space-around;
-
   color: #696a6b;
   margin-right: 5px;
 }
@@ -36,6 +38,9 @@ html .dark,
   }
 }
 
-.dark__tema {
+.menubtn {
   margin-top: 20px;
+
+  display: flex;
+  justify-content: space-around;
 }
