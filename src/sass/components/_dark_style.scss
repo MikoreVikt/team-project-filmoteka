@@ -1,21 +1,41 @@
-html.dark,
+html .dark,
 .dark body,
 .dark .modal__container,
 .dark .modal-title,
 .dark .movie__text,
 .dark .movie__title,
-.dark .content-values {
-  // font-size: 18px;
-  // font-family: sans-serif;
+.dark .content-values,
+.dark .gallery__title,
+.dark .footer,
+.dark .pagination__btn {
+
   background: #2e3238;
   color: #fff;
 
   .menu__btn {
     color: #fff;
   }
+
+  .pagination__btn-current {
+    background-color: var(--bg-orange-color);
+  }
 }
 
 .menu__btn {
+  display: flex;
+  justify-content: space-around;
+
   color: #696a6b;
-  margin-right: 20px;
+  margin-right: 5px;
+}
+
+.menu__btn,
+.btn-list {
+  @media screen and (min-width: 375px) {
+    margin-right: 20px;
+  }
+}
+
+.dark__tema {
+  margin-top: 20px;
 }
