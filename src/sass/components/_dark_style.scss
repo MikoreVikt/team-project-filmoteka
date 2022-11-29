@@ -1,10 +1,12 @@
-html.dark,
+html .dark,
 .dark body,
 .dark .modal__container,
 .dark .modal-title,
 .dark .movie__text,
 .dark .movie__title,
-.dark .content-values {
+.dark .content-values,
+.dark .gallery__title,
+.dark .footer {
   // font-size: 18px;
   // font-family: sans-serif;
   background: #2e3238;
@@ -16,6 +18,20 @@ html.dark,
 }
 
 .menu__btn {
+  display: flex;
+  justify-content: space-around;
+
   color: #696a6b;
-  margin-right: 20px;
+  margin-right: 5px;
+}
+
+.menu__btn,
+.btn-list{
+  @media screen and (min-width: 375px) {
+      margin-right: 20px;
+  }
+}
+
+.dark__tema{
+  margin-top: 20px;
 }
