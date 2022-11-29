@@ -75,10 +75,10 @@ function render(pageNumber) {
   getEl('.arrow-left').hidden = pageNumber <= 1;
   getEl('.arrow-right').hidden = pageNumber >= maxPage;
 
-  getEl('.dots-left').hidden = pageNumber <= pageCount + 1;
+  getEl('.dots-left').hidden = pageNumber <= pageCount + 2;
   getEl('.first-button').hidden = getEl('.dots-left').hidden;
 
-  getEl('.dots-after').hidden = pageNumber >= maxPage - pageCount;
+  getEl('.dots-after').hidden = pageNumber >= maxPage - pageCount -1;
   getEl('.last-button').hidden = getEl('.dots-after').hidden;
 
   btns.forEach(el => el.classList.remove('pagination__btn-current'));
