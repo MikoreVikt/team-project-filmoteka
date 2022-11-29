@@ -6,14 +6,18 @@ html .dark,
 .dark .movie__title,
 .dark .content-values,
 .dark .gallery__title,
-.dark .footer {
-  // font-size: 18px;
-  // font-family: sans-serif;
+.dark .footer,
+.dark .pagination__btn {
+
   background: #2e3238;
   color: #fff;
 
   .menu__btn {
     color: #fff;
+  }
+
+  .pagination__btn-current {
+    background-color: var(--bg-orange-color);
   }
 }
 
@@ -26,12 +30,12 @@ html .dark,
 }
 
 .menu__btn,
-.btn-list{
+.btn-list {
   @media screen and (min-width: 375px) {
-      margin-right: 20px;
+    margin-right: 20px;
   }
 }
 
-.dark__tema{
+.dark__tema {
   margin-top: 20px;
 }
