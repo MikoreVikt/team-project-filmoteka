@@ -43,12 +43,13 @@ function saveToLocalStorage(type){
     const data = local[type].data;
 
     save(key, [...data, film]);
+    Notiflix.Notify.success('This film added to your ' + type + ' library')
 }
 
 function checkData(savedData, film){
     for(let obj in savedData){
         if(savedData[obj].data.some(d => d.id === film.id)){
-            Notiflix.Notify.warning('This film is already in your libruary ' + obj);
+            Notiflix.Notify.warning('This film is already in your library ' + obj);
             return true;
         }
     }
