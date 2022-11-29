@@ -6,6 +6,7 @@ const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 let page = 1;
 export let imgHttps = 'https://image.tmdb.org/t/p/w500/';
 let src;
+const defaultSrc = './images/default-img.jpg';
 
 export async function createGallery(page) {
   try {
@@ -46,7 +47,13 @@ function markupCard(filmsArray) {
       ({ id, poster_path, title, genre_name, release_date, vote_average }) => {
         const date = release_date.slice(0, 4);
         const rating = vote_average.toFixed(1);
-        src = imgHttps + poster_path;
+
+        if (poster_path !== defaultSrc) {
+          src = imgHttps + poster_path;
+        } else {
+          src = defaultSrc;
+        }
+
         return `
       <li class="gallery__item card-set">
     <a class="link" href="">
@@ -99,10 +106,8 @@ function createError() {
 
 export function validationData(films) {
   films.forEach(film => {
-    console.log(film.poster_path);
     if (!film.poster_path || film.poster_path === null) {
-      src = './images/default-img.jpg';
-      film.poster_path = '';
+      film.poster_path = defaultSrc;
     }
     if (!film.release_date) {
       film.release_date = '';
