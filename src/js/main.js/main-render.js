@@ -2,13 +2,16 @@ const galleryRef = document.querySelector('.gallery');
 
 const URL = 'https://api.themoviedb.org/3';
 const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
+
 let page = 1;
+export let imgHttps = 'https://image.tmdb.org/t/p/w500/';
 
 export async function createGallery() {
   try {
     const genresArray = await fetchGenres().then(data => data.genres);
     const filmsArray = await fetchAPI(page).then(data => data.results);
     createGenres(filmsArray, genresArray);
+    validationData(filmsArray);
     markupCard(filmsArray);
   } catch (error) {
     createError();
@@ -42,6 +45,7 @@ function markupCard(filmsArray) {
       ({ id, poster_path, title, genre_name, release_date, vote_average }) => {
         const date = release_date.slice(0, 4);
         const rating = vote_average.toFixed(1);
+        const src = imgHttps + poster_path;
         return `
       <li class="gallery__item card-set">
     <a class="link" href="">
@@ -50,7 +54,7 @@ function markupCard(filmsArray) {
           width="280"
           class="gallery__img"
           data-id="${id}"
-          src="https://image.tmdb.org/t/p/w500/${poster_path}"
+          src=${src}
           alt="${title}"
           loading="lazy"
         />
@@ -90,4 +94,18 @@ function createError() {
       <p>Error</p>
       <p>Oops, something went wrong. Please try again later.</p>
     </section>`;
+}
+
+export function validationData(films) {
+  films.forEach(film => {
+    if (!film.poster_path) {
+      imgHttps = './default-img.jpg';
+    }
+    if (!film.release_date) {
+      film.release_date = '';
+    }
+    if (film.vote_average < 0 || film.vote_average > 10) {
+      film.vote_average = 0;
+    }
+  });
 }
