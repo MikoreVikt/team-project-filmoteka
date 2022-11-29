@@ -90,6 +90,4 @@ function render(pageNumber) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-window.render = render;
-
 firstPage();
