@@ -5,6 +5,7 @@ const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 
 let page = 1;
 export let imgHttps = 'https://image.tmdb.org/t/p/w500/';
+let src;
 
 export async function createGallery(page) {
   try {
@@ -45,7 +46,7 @@ function markupCard(filmsArray) {
       ({ id, poster_path, title, genre_name, release_date, vote_average }) => {
         const date = release_date.slice(0, 4);
         const rating = vote_average.toFixed(1);
-        const src = imgHttps + poster_path;
+        src = imgHttps + poster_path;
         return `
       <li class="gallery__item card-set">
     <a class="link" href="">
@@ -98,8 +99,10 @@ function createError() {
 
 export function validationData(films) {
   films.forEach(film => {
-    if (!film.poster_path) {
-      imgHttps = './default-img.jpg';
+    console.log(film.poster_path);
+    if (!film.poster_path || film.poster_path === null) {
+      src = './images/default-img.jpg';
+      film.poster_path = '';
     }
     if (!film.release_date) {
       film.release_date = '';
@@ -107,5 +110,39 @@ export function validationData(films) {
     if (film.vote_average < 0 || film.vote_average > 10) {
       film.vote_average = 0;
     }
+  });
+}
+// ====== Search by name =========================================================
+
+const formRef = document.querySelector('.form');
+
+let searchValue;
+
+formRef.addEventListener('submit', findName);
+
+async function findName(e) {
+  e.preventDefault();
+  searchValue = e.target.search.value;
+  try {
+    const genresArray = await fetchGenres().then(data => data.genres);
+    const filmsArray = await fetchName(searchValue).then(data => data.results);
+    console.log(filmsArray);
+    createGenres(filmsArray, genresArray);
+
+    validationData(filmsArray);
+
+    markupCard(filmsArray);
+  } catch (error) {
+    createError();
+  }
+}
+
+function fetchName(value) {
+  return fetch(`${URL}/search/movie?api_key=${API_KEY}&query=${value}
+`).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
   });
 }
