@@ -44,21 +44,28 @@
   @media screen and (max-width: 320px) {
     max-width: 250px;
     width: calc(100% - 20px);
+    height: 70vh;
+    overflow: scroll;
   }
 
   @media screen and (min-width: 320px) {
     width: calc(100% - 20px);
     max-width: 250px;
+    height: 70vh;
+    overflow: scroll;
   }
 
   @media screen and (min-width: 480px) {
     width: calc(100% - 20px);
     max-width: 540px;
+    height: 80vh;
   }
 
   @media screen and (min-width: 1200px) {
     // max-width: 528px;
     max-width: 970px;
+    // height: 81%;
+    height: fit-content;
   }
 }
 .btn-team-modal--close {
