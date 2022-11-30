@@ -1,0 +1,21 @@
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+
+
+    // breakpoint: 320px / 768px / 1280px
+    
+        @media screen and (min-width: $mobile) {
+            max-width: $mobile;
+        }
+    
+        @media screen and (min-width: $tablet) {
+            max-width: $tablet;
+            padding: 0 32px;
+        }
+    
+        @media screen and (min-width: $desktop) {
+            max-width: $desktop;
+        }
+}

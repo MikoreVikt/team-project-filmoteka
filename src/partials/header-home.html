@@ -1,0 +1,50 @@
+<header class="header" data-header>
+  <div class="container">
+    <div class="home">
+      <div class="main-header">
+        <a href="./index.html" class="logo link">
+          <svg class="icon-logo" width="24" height="24">
+            <use href="./images/sprite.svg#icon-film"></use>
+          </svg>
+          <span class="logo-span">Filmoteka</span>
+        </a>
+
+        <nav class="nav">
+          <ul class="nav-list list">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link link current">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="./library.html" class="nav-link link">My library</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <form class="form" id="search-form">
+        <div class="">
+          <ul>
+            <li>
+              <a href="#" class="themetoggle menu__btn">
+                <span class="material-icons">wb_sunny</span></a
+              >
+            </li>
+          </ul>
+        </div>
+        <input
+          type="text"
+          placeholder="Movie search"
+          class="input-home"
+          id="search"
+          name="search"
+        />
+        <p class="message-error"></p>
+        <button type="submit" class="form-button" aria-label="button search">
+          <svg class="icon-input" width="12" height="12">
+            <use href="./images/sprite.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</header>

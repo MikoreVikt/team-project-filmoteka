@@ -1,0 +1,123 @@
+.header-library {
+    width: 100vw;
+    z-index: 11;
+  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 230px;
+
+    background-image: url('/src/images/header_1 page/header_1x_320px(home-queue).jpg');
+
+    // Для ретіна екранів(мобільний)
+
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url('/src/images/header_1 page/header_2x_320px(home-queue).jpg');
+    }
+
+    @media (min-device-pixel-ratio: 3),
+    (min-resolution: 288dpi),
+    (min-resolution: 3dppx) {
+        background-image: url('/src/images/header_1 page/header_3x_320px(home-queue).jpg');
+    }
+
+
+    @media screen and (min-width: $tablet) {
+        height: 219px;
+
+        background-image: url('/src/images/header_1 page/header_1x_768px(home-warning).jpg');
+
+        // Для ретіна екранів(планшет)
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('/src/images/header_1 page/header_2x_768px(home-warning).jpg');
+        }
+
+        @media (min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            background-image: url('/src/images/header_1 page/header_3x_768px(home-warning).jpg');
+        }
+    }
+
+    @media screen and (min-width: $desktop) {
+        height: 216px;
+
+        background-image: url('/src/images/header_1 page/header_1x_1280px(watched).jpg');
+
+
+        // Для ретіна екранів(десктоп)
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('/src/images/header_1 page/header_2x_1280px(watched).jpg');
+        }
+
+        @media (min-device-pixel-ratio: 3),
+        (min-resolution: 288dpi),
+        (min-resolution: 3dppx) {
+            background-image: url('/src/images/header_1 page/header_3x_1280px(watched).jpg');
+        }
+    }
+}
+
+.library {
+    padding-top: 40px;
+    padding-bottom: 62px;
+
+    @media screen and (min-width: $tablet) {
+    
+            padding-top: 45px;
+            padding-bottom: 60px;
+        }
+}
+
+.btn-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 16px
+}
+
+
+.button {
+    width: 130px;
+    height: 44px;
+    font-size: 16px;
+
+    text-transform: uppercase;
+
+    color: var(--white-color);
+    background: rgba(0, 0, 0, 0.56);
+    border: 1px solid var(--white-color);
+    border-radius: 5px;
+
+    &:hover {
+        background-color: var(--bg-orange-color);
+        box-shadow: 0px 8px 43px #fff;
+        border: none;
+        transition: var(--anim-standart);
+    }
+
+    @media screen and (min-width: $tablet) {
+        min-width: 152px;
+    }
+    
+    @media screen and (min-width: $desktop) {
+        min-width: 148px;
+   }
+}
+
+.btn-active {
+    background-color: var(--bg-orange-color);
+    color:var(--white-color);
+    border-color: var(--bg-orange-color);
+}
