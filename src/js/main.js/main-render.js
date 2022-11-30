@@ -122,10 +122,10 @@ export function validationData(films) {
 // ====== Search by name =========================================================
 
 const formRef = document.querySelector('.form');
-
+const errorInput = document.querySelector('.message-error');
+const textError =
+  'Search result not successful. Enter the correct movie name and';
 let searchValue;
-const errorInput =
-  '<p class="error__text">Search result not successful. Enter the correct movie name and</p>';
 
 formRef.addEventListener('submit', findName);
 
@@ -141,11 +141,9 @@ async function findName(e) {
     validationData(filmsArray);
 
     if (!filmsArray.length) {
-      document
-        .querySelector('.form__error')
-        .insertAdjacentHTML('beforeend', errorInput);
+      errorInput.innerHTML = textError;
     } else {
-      document.querySelector('.form__error').innerHTML = '';
+      errorInput.innerHTML = '';
     }
 
     markupCard(filmsArray);
