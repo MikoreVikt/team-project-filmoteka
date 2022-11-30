@@ -7,7 +7,13 @@ let page = 1;
 export let imgHttps = 'https://image.tmdb.org/t/p/w500/';
 let src;
 const defaultSrc = './images/default-img.jpg';
-
+// ============Search by name===============================
+const formRef = document.querySelector('.form');
+const errorInput = document.querySelector('.message-error');
+const textError =
+  'Search result not successful. Enter the correct movie name and';
+let searchValue;
+// ========================================================
 export async function createGallery(page) {
   try {
     const genresArray = await fetchGenres().then(data => data.genres);
@@ -22,6 +28,7 @@ export async function createGallery(page) {
 
 if (document.querySelector('a.nav-link.link.current').text === 'Home') {
   createGallery(page);
+  formRef.addEventListener('submit', findName);
 }
 
 function fetchAPI(page) {
@@ -120,14 +127,6 @@ export function validationData(films) {
   });
 }
 // ====== Search by name =========================================================
-
-const formRef = document.querySelector('.form');
-const errorInput = document.querySelector('.message-error');
-const textError =
-  'Search result not successful. Enter the correct movie name and';
-let searchValue;
-
-formRef.addEventListener('submit', findName);
 
 async function findName(e) {
   e.preventDefault();
