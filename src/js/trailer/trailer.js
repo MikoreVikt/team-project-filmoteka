@@ -1,48 +1,36 @@
 
 import * as basicLightbox from 'basiclightbox';
+const basicLightbox = require('basiclightbox');
 
-const URL = 'https://developers.themoviedb.org/3/movies/get-movie-videos';
+const URL = (api_key, movie_id) => `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${api_key}&language=en-US`;
 const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 
-
-const trailerBtn = document.querySelector('.button-trailer');
-trailerBtn.addEventListener('click', event => {
-  new runTrailer(event.target.dataset.id, event.target.dataset.name).show();
+document.addEventListener('click', e => {
+  if(!e.target.dataset.trailer){
+    return;
+  }
+  new RunTrailer(e.target.dataset.trailer, 'e.target.dataset.name').show();
 });
 
-class runTrailer {
-  constructor(trailerID, trailerName) {
+class RunTrailer {
+  constructor(trailerID) {
     this.trailerID = trailerID;
-    this.trailerName = trailerName;
   }
 
-  async fetchTrailer() {
-    const id = await movieTrailer(null, {
-      tmdbId: this.trailerID,
-      apiKey: settings.API_KEY,
-      id: true,
-    });
-    return id !== null ? id : this.fetchTrailerByName();
-  }
-
-  async fetchTrailerByName() {
-    const idByName = await movieTrailer(this.trailerName, {
-      apiKey: settings.API_KEY,
-      id: true,
-    });return idByName !== null ? idByName : '';
-    
-  }
-
-  markupTrailer(id) {
+  #markupTrailer(id) {
     return `<iframe src="https://www.youtube.com/embed/${id}?rel=0&autoplay=1" frameborder="0" allow="autoplay; fullscreen" class="trailer-tag" include></iframe>`;
   }
 
-  showTrailerModal(markup) {
-    return basicLightbox.create(markup).show();
+ 
+  #showTrailerModal(id) {
+    return basicLightbox.create(this.#markupTrailer(id)).show();
   }
 
-  show() {
-    this.fetchTrailer().then(this.markupTrailer).then(this.showTrailerModal);
+   async show() {
+    const request = await fetch(URL(API_KEY, this.trailerID));
+    const response = await request.json();
+    const key = await response.results[0].key;
+    this.#showTrailerModal(key);
   }
 }
 
