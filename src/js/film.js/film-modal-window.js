@@ -26,6 +26,7 @@ function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
   refs.backdrop.classList.add('is-hidden');
   document.body.classList.remove('no-scroll');
+  refs.filmModal.innerHTML = '';
 }
 
 function onBackdropClick(event) {
