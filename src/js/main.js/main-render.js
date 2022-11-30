@@ -64,27 +64,24 @@ function markupCard(filmsArray) {
         }
 
         return `
-      <li class="gallery__item card-set">
-    <a class="link" href="">
-      <div class="img-wrap">
-        <img
-          width="280"
-          class="gallery__img"
-          data-id="${id}"
-          src=${src}
-          alt="${title}"
-          loading="lazy"
-        />
-      </div>
-      <div class="gallary-wrapper">
-        <h2 class="gallery__title">${title}</h2>
-        <div class="gallery__wrap">
-          <p class="gallery__ganres">${genre_name} | ${date}</p>
-          <p class="gallery__rating">${rating}</p>
+      <li class="gallery__item card-set" data-id="${id}">
+        <div class="img-wrap">
+          <img
+            width="280"
+            class="gallery__img"
+            src="${src}"
+            alt="${title}"
+            loading="lazy"
+          />
         </div>
-      </div>
-    </a>
-  </li>
+        <div class="gallary-wrapper">
+          <h2 class="gallery__title">${title}</h2>
+          <div class="gallery__wrap">
+            <p class="gallery__ganres">${genre_name} | ${date}</p>
+            <p class="gallery__rating">${rating}</p>
+          </div>
+        </div>
+      </li>
 `;
       }
     )
