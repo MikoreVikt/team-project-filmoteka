@@ -20,7 +20,9 @@ export async function createGallery(page) {
   }
 }
 
-createGallery(page);
+if (document.querySelector('a.nav-link.link.current').text === 'Home') {
+  createGallery(page);
+}
 
 function fetchAPI(page) {
   return fetch(`${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}
@@ -122,6 +124,8 @@ export function validationData(films) {
 const formRef = document.querySelector('.form');
 
 let searchValue;
+const errorInput =
+  '<p class="error__text">Search result not successful. Enter the correct movie name and</p>';
 
 formRef.addEventListener('submit', findName);
 
@@ -135,6 +139,14 @@ async function findName(e) {
     createGenres(filmsArray, genresArray);
 
     validationData(filmsArray);
+
+    if (!filmsArray.length) {
+      document
+        .querySelector('.form__error')
+        .insertAdjacentHTML('beforeend', errorInput);
+    } else {
+      document.querySelector('.form__error').innerHTML = '';
+    }
 
     markupCard(filmsArray);
   } catch (error) {
