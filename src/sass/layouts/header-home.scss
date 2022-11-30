@@ -94,6 +94,27 @@
     }
 }
 
+.logo-animate {
+    content: "translateX(50px)";
+
+    &:hover {
+        animation: animateX50 1500ms;
+    }
+}
+
+@keyframes animateX50 {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(50px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
 
 .logo-span {
     font-size: 30px;
@@ -138,7 +159,7 @@
 }
 
 .nav-item {
- 
+
     transition: transform var(--anim-standart);
 
     &:hover,
