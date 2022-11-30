@@ -8,10 +8,11 @@ refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onPosterClick(e) {
   e.preventDefault();
-  if (!e.target.classList.contains(`gallery__img`)) {
+  if (!e.target.closest(`li`).classList.contains(`gallery__item`)) {
+    console.log('if', e.target);
     return;
   }
-  const idValue = e.target.dataset.id;
+  const idValue = e.target.closest(`li`).dataset.id;
   fetchId(idValue).then(renderModalWindow);
   onOpenModal();
 }
