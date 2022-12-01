@@ -3,10 +3,12 @@ const galleryRef = document.querySelector('.gallery');
 const URL = 'https://api.themoviedb.org/3';
 const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 
+const IMG_HTTPS = 'https://image.tmdb.org/t/p/w500/';
+const DEFAULT_SRC = './images/default-img.jpg';
 let page = 1;
-export let imgHttps = 'https://image.tmdb.org/t/p/w500/';
 let src;
-const defaultSrc = './images/default-img.jpg';
+
+export { IMG_HTTPS, DEFAULT_SRC };
 // ============Search by name===============================
 const formRef = document.querySelector('.form');
 const errorInput = document.querySelector('.message-error');
@@ -57,10 +59,10 @@ function markupCard(filmsArray) {
         const date = release_date.slice(0, 4);
         const rating = vote_average.toFixed(1);
 
-        if (poster_path !== defaultSrc) {
-          src = imgHttps + poster_path;
+        if (poster_path !== DEFAULT_SRC) {
+          src = IMG_HTTPS + poster_path;
         } else {
-          src = defaultSrc;
+          src = DEFAULT_SRC;
         }
 
         return `
@@ -111,17 +113,27 @@ function createError() {
 }
 
 export function validationData(films) {
-  films.forEach(film => {
-    if (!film.poster_path || film.poster_path === null) {
-      film.poster_path = defaultSrc;
+  if (films.constructor === Array) {
+    films.forEach(film => {
+      if (!film.poster_path || film.poster_path === null) {
+        film.poster_path = DEFAULT_SRC;
+      }
+      if (!film.release_date) {
+        film.release_date = 'N/A';
+      }
+      if (!film.genre_ids.length) {
+        film.genre_name = 'N/A';
+      }
+    });
+  } else {
+    if (!films.poster_path || films.poster_path === null) {
+      films.poster_path = DEFAULT_SRC;
     }
-    if (!film.release_date) {
-      film.release_date = '';
+    if (!films.genres.length) {
+      const newObj = { name: 'Genre is not defined' };
+      films.genres.push(newObj);
     }
-    if (film.vote_average < 0 || film.vote_average > 10) {
-      film.vote_average = 0;
-    }
-  });
+  }
 }
 // ====== Search by name =========================================================
 
@@ -131,7 +143,6 @@ async function findName(e) {
   try {
     const genresArray = await fetchGenres().then(data => data.genres);
     const filmsArray = await fetchName(searchValue).then(data => data.results);
-    console.log(filmsArray);
     createGenres(filmsArray, genresArray);
 
     validationData(filmsArray);
