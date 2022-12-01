@@ -40,7 +40,7 @@ function handlePagination(e) {
 // getEl('.form').addEventListener('submit', findByName);
 
 // function findByName(e){
-  
+
 // }
 
 function firstPage() {
@@ -62,11 +62,9 @@ function render(pageNumber) {
     pagesList.push(i);
   }
 
-  getEl('[data-index="1"]').textContent = pagesList[0];
-  getEl('[data-index="2"]').textContent = pagesList[1];
-  getEl('[data-index="3"]').textContent = pagesList[2];
-  getEl('[data-index="4"]').textContent = pagesList[3];
-  getEl('[data-index="5"]').textContent = pagesList[4];
+  pagesList.forEach(
+    (e, i) => (getEl(`[data-index="${i + 1}"]`).textContent = e)
+  );
 
   getEl('.arrow-left').hidden = pageNumber <= 1;
   getEl('.arrow-right').hidden = pageNumber >= maxPage;
