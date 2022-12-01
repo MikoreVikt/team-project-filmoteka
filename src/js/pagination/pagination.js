@@ -1,11 +1,10 @@
 import { createGallery } from '../main.js/main-render';
-import { findName } from '../main.js/main-render';
+
 let getEl = selector => document.querySelector(selector);
 
 let currentPage = 1;
 let maxPage = 100;
 let pageCount = 2;
-let query = '';
 
 getEl('.pagination').addEventListener('click', handlePagination);
 
@@ -37,11 +36,6 @@ function handlePagination(e) {
     return;
   }
 }
-// getEl('.form').addEventListener('submit', findByName);
-
-// function findByName(e){
-
-// }
 
 function firstPage() {
   currentPage = 1;
