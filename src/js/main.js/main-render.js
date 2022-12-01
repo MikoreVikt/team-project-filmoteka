@@ -10,18 +10,22 @@ let src;
 
 export { IMG_HTTPS, DEFAULT_SRC };
 // ============Search by name===============================
-const formRef = document.querySelector('.form');
 const errorInput = document.querySelector('.message-error');
 const textError =
   'Search result not successful. Enter the correct movie name and';
-let searchValue = false;
 // ========================================================
-export async function createGallery(page) {
+export async function createGallery(page, url = `${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`) {
   try {
     const genresArray = await fetchGenres().then(data => data.genres);
-    const filmsArray = await fetchAPI(page).then(data => data.results);
+    const filmsArray = await fetchAPI(url).then(data => data.results);
     createGenres(filmsArray, genresArray);
     validationData(filmsArray);
+    if (!filmsArray.length) {
+      errorInput.innerHTML = textError;
+    } else {
+      errorInput.innerHTML = '';
+    }
+
     markupCard(filmsArray);
   } catch (error) {
     createError();
@@ -30,12 +34,10 @@ export async function createGallery(page) {
 
 if (document.querySelector('a.nav-link.link.current').text === 'Home') {
   createGallery(page);
-  formRef.addEventListener('submit', findName);
 }
 
-function fetchAPI(page) {
-  return fetch(`${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}
-`).then(response => {
+function fetchAPI(url) {
+  return fetch(url).then(response => {
     if (!response.ok) {
       throw new Error(response.status);
     }
@@ -133,43 +135,4 @@ export function validationData(films) {
       films.genres.push(newObj);
     }
   }
-}
-// ====== Search by name =========================================================
-
-async function findName(e) {
-  e.preventDefault();
-  searchValue = e.target.search.value;
-  if (!searchValue) {
-    createGallery(page);
-  } else {
-    try {
-      const genresArray = await fetchGenres().then(data => data.genres);
-      const filmsArray = await fetchName(searchValue).then(
-        data => data.results
-      );
-      createGenres(filmsArray, genresArray);
-
-      validationData(filmsArray);
-
-      if (!filmsArray.length) {
-        errorInput.innerHTML = textError;
-      } else {
-        errorInput.innerHTML = '';
-      }
-
-      markupCard(filmsArray);
-    } catch (error) {
-      createError();
-    }
-  }
-}
-
-function fetchName(value) {
-  return fetch(`${URL}/search/movie?api_key=${API_KEY}&query=${value}
-`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
 }
