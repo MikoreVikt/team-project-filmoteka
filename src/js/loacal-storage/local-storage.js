@@ -35,25 +35,17 @@ function saveToLocalStorage(type){
         }
     }
 
-    if(checkData(local, film)){
-        return;
-    }
-
+    
     const key = local[type].key;
     const data = local[type].data;
-
-    save(key, [...data, film]);
-    Notiflix.Notify.success('This film added to your ' + type + ' library')
-}
-
-function checkData(savedData, film){
-    for(let obj in savedData){
-        if(savedData[obj].data.some(d => d.id === film.id)){
-            Notiflix.Notify.warning('This film is already in your library ' + obj);
-            return true;
-        }
+    
+    if(data.some(d => d.id == film.id)){
+        save(key, [...data.filter(d => d.id !== film.id)]);
+        Notiflix.Notify.warning(`This film removed from your ${type} library`);
+    } else{
+        save(key, [...data, film]);
+        Notiflix.Notify.success(`This film added to your ${type} library`);
     }
-    return false;
 }
 
 function save(key, data){
