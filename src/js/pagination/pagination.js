@@ -47,7 +47,6 @@ let btns = document.querySelectorAll('.pagination__btn');
 function render(pageNumber) {
   let startPage = Math.max(1, pageNumber - pageCount);
   let pagesList = [];
-  // console.log(pageNumber);
   if (startPage + pageCount * 2 > maxPage) {
     startPage = maxPage - pageCount * 2;
   }
