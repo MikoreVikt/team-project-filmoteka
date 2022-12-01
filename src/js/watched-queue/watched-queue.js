@@ -27,7 +27,7 @@ function currentPageCheck() {
 addImgIfLocalStgEmpty()
 
           refs.queueButton.addEventListener('click', onQueueButton);
-        } else {
+    } else {
        LocalStgWatchedData = JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED));
         let LocalStgData = LocalStgWatchedData;
         markupCard(LocalStgData)
@@ -54,22 +54,27 @@ function onWatchedButton() {
 function onQueueButton() {
     refs.watchedButton.classList.remove("btn-active");
     refs.queueButton.classList.add("btn-active");
-    if (localStorage.getItem(LOCAL_STORGE_QUEUE) == null) {
+  if (localStorage.getItem(LOCAL_STORGE_QUEUE) == null) {
+      
           refs.galleryRef.innerHTML = ""; 
         Notiflix.Notify.failure('There are no films in Queue !');
         addImgIfLocalStgEmpty()
          refs.watchedButton.addEventListener('click', onWatchedButton)
     return 
 }
-    
+    console.log('111111111111111111111111')
     LocalStgQueueData = JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE));
-    let LocalStgData = LocalStgQueueData;
-    markupCard(LocalStgData)
+  let LocalStgData = LocalStgQueueData;
+  console.log(LocalStgData)
+
+ 
+
     if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null) {
              addImgIfLocalStgEmpty()
             refs.watchedButton.addEventListener('click', onWatchedButton)
+} markupCard(LocalStgData);
 }
-}
+
 
 function markupCard(LocalStgData) {
   const markup = LocalStgData.map(({ alt, date, genre, id, src, vote }) => {
@@ -100,7 +105,8 @@ function markupCard(LocalStgData) {
 
 
 function addImgIfLocalStgEmpty() {
-    refs.galleryRef.innerHTML = '<li ><img class="img-for-empty" src="" alt=" "/> <h2>где-то здесь должна быть картинка при пустом локале</h2></li>'  
+    refs.galleryRef.innerHTML = '<li ><img class="img-for-empty" src="https://animated-images.su/_ph/21/2/610625713.gif" alt=" "/> <h2>"THERE`S NOTHING HERE"</h2></li>'  
 }
+
 
 
