@@ -8,33 +8,20 @@ let pageCount = 2;
 
 getEl('.pagination').addEventListener('click', handlePagination);
 
-function handlePagination(e) {
+function handlePagination(e, createGalleryFunc = createGallery) {
   if (Number(e.target.dataset.index)) {
     currentPage = Number(e.target.textContent);
-    render(currentPage);
-    createGallery(currentPage);
-    return;
   } else if (e.target.dataset.index == 'first') {
     currentPage = 1;
-    render(currentPage);
-    createGallery(currentPage);
-    return;
   } else if (e.target.dataset.index == 'last') {
     currentPage = maxPage;
-    render(currentPage);
-    createGallery(currentPage);
-    return;
   } else if (e.target.dataset.index == 'right') {
     currentPage = Math.min(currentPage + 1, 100);
-    render(currentPage);
-    createGallery(currentPage);
-    return;
   } else if (e.target.dataset.index == 'left') {
     currentPage = Math.max(currentPage - 1, 1);
-    render(currentPage);
-    createGallery(currentPage);
-    return;
   }
+  render(currentPage);
+  createGalleryFunc(currentPage);
 }
 
 function firstPage() {
@@ -78,3 +65,37 @@ function render(pageNumber) {
 }
 
 firstPage();
+
+const formRef = document.querySelector('form');
+formRef.addEventListener('submit', handleSearch);
+let searchHanlderRef;
+function handleSearch(e) {
+  e.preventDefault();
+  if (!e.target.search.value) {
+    return;
+  }
+  firstPage();
+  const searchName = e.target.search.value;
+  const URL = 'https://api.themoviedb.org/3';
+  const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
+  const searchUrl = (page, searchName) =>
+    `${URL}/search/movie?api_key=${API_KEY}&query=${searchName}&page=${page}`;
+  const searchPagination = e =>
+    handlePagination(e, page =>
+      createGallery(page, searchUrl(page, searchName))
+    );
+  searchHanlderRef = searchPagination;
+  createGallery(1, searchUrl(1, searchName));
+  getEl('.pagination').removeEventListener('click', handlePagination);
+  getEl('.pagination').addEventListener('click', searchPagination);
+}
+
+formRef.addEventListener('input', handleEmptyValue);
+function handleEmptyValue(e) {
+  if (!e.target.value && searchHanlderRef) {
+    createGallery(1);
+    firstPage();
+    getEl('.pagination').removeEventListener('click', searchHanlderRef);
+    getEl('.pagination').addEventListener('click', handlePagination);
+  }
+}
