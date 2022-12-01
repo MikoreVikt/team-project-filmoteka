@@ -36,7 +36,6 @@ export async function createGallery(page, url = `${URL}/trending/movie/day?api_k
 
 if (document.querySelector('a.nav-link.link.current').text === 'Home') {
   createGallery(page);
-  // formRef.addEventListener('submit', findName);
 }
 
 function fetchAPI(url) {
@@ -138,43 +137,4 @@ export function validationData(films) {
       films.genres.push(newObj);
     }
   }
-}
-// ====== Search by name =========================================================
-
-export async function findName(e) {
-  e.preventDefault();
-  searchValue = e.target.search.value;
-  if (!searchValue) {
-    createGallery(page);
-  } else {
-    try {
-      const genresArray = await fetchGenres().then(data => data.genres);
-      const filmsArray = await fetchName(searchValue).then(
-        data => data.results
-      );
-      createGenres(filmsArray, genresArray);
-
-      validationData(filmsArray);
-
-      if (!filmsArray.length) {
-        errorInput.innerHTML = textError;
-      } else {
-        errorInput.innerHTML = '';
-      }
-
-      markupCard(filmsArray);
-    } catch (error) {
-      createError();
-    }
-  }
-}
-
-function fetchName(value, page = 1) {
-  return fetch(`${URL}/search/movie?api_key=${API_KEY}&query=${value}&page=${page}
-`).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
 }
