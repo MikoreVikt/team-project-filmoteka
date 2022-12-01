@@ -1,5 +1,8 @@
 import getRefs from './get-refs';
 import { fetchId } from './fetch-id';
+import { validationData } from '../main.js/main-render';
+import { IMG_HTTPS, DEFAULT_SRC } from '../main.js/main-render';
+let src;
 
 const refs = getRefs();
 refs.gallery.addEventListener('click', onPosterClick);
@@ -8,12 +11,17 @@ refs.backdrop.addEventListener('click', onBackdropClick);
 
 function onPosterClick(e) {
   e.preventDefault();
-  if (!e.target.closest(`li`).classList.contains(`gallery__item`)) {
-    console.log('if', e.target);
+  if (
+    !e.target.closest(`li`).classList.contains(`gallery__item`) ||
+    e.target.classList.contains(`gallery`)
+  ) {
     return;
   }
   const idValue = e.target.closest(`li`).dataset.id;
-  fetchId(idValue).then(renderModalWindow);
+  fetchId(idValue).then(data => {
+    validationData(data);
+    renderModalWindow(data);
+  });
   onOpenModal();
 }
 
@@ -60,10 +68,16 @@ function renderModalWindow({
   const populary = popularity.toFixed(1);
   const genre = genres.map(obj => obj.name).join(', ');
 
+  if (poster_path !== DEFAULT_SRC) {
+    src = IMG_HTTPS + poster_path;
+  } else {
+    src = DEFAULT_SRC;
+  }
+
   const markupModal = `
         <div class="modal__container">
         <div class="poster-container">
-  <img class="poster" src="https://image.tmdb.org/t/p/w500/${poster_path}" alt="${original_title}"/>
+  <img class="poster" src="${src}" alt="${original_title}"/>
     </div>
     <div class="movie-container">
       <h3 class="modal-title" data-id="${id}">${original_title}</h3>
