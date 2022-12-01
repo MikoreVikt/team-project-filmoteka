@@ -10,11 +10,9 @@ let src;
 
 export { IMG_HTTPS, DEFAULT_SRC };
 // ============Search by name===============================
-const formRef = document.querySelector('.form');
 const errorInput = document.querySelector('.message-error');
 const textError =
   'Search result not successful. Enter the correct movie name and';
-let searchValue = false;
 // ========================================================
 export async function createGallery(page, url = `${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`) {
   try {
