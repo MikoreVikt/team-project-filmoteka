@@ -14,7 +14,7 @@ const formRef = document.querySelector('.form');
 const errorInput = document.querySelector('.message-error');
 const textError =
   'Search result not successful. Enter the correct movie name and';
-let searchValue;
+let searchValue = false;
 // ========================================================
 export async function createGallery(page) {
   try {
@@ -69,7 +69,6 @@ function markupCard(filmsArray) {
       <li class="gallery__item card-set" data-id="${id}">
         <div class="img-wrap">
           <img
-            width="280"
             class="gallery__img"
             src="${src}"
             alt="${title}"
@@ -140,22 +139,28 @@ export function validationData(films) {
 async function findName(e) {
   e.preventDefault();
   searchValue = e.target.search.value;
-  try {
-    const genresArray = await fetchGenres().then(data => data.genres);
-    const filmsArray = await fetchName(searchValue).then(data => data.results);
-    createGenres(filmsArray, genresArray);
+  if (!searchValue) {
+    createGallery(page);
+  } else {
+    try {
+      const genresArray = await fetchGenres().then(data => data.genres);
+      const filmsArray = await fetchName(searchValue).then(
+        data => data.results
+      );
+      createGenres(filmsArray, genresArray);
 
-    validationData(filmsArray);
+      validationData(filmsArray);
 
-    if (!filmsArray.length) {
-      errorInput.innerHTML = textError;
-    } else {
-      errorInput.innerHTML = '';
+      if (!filmsArray.length) {
+        errorInput.innerHTML = textError;
+      } else {
+        errorInput.innerHTML = '';
+      }
+
+      markupCard(filmsArray);
+    } catch (error) {
+      createError();
     }
-
-    markupCard(filmsArray);
-  } catch (error) {
-    createError();
   }
 }
 
