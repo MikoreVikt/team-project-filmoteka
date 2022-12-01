@@ -5,11 +5,12 @@ let getEl = selector => document.querySelector(selector);
 let currentPage = 1;
 let maxPage = 100;
 let pageCount = 2;
+let query = '';
 
 getEl('.pagination').addEventListener('click', handlePagination);
 
 function handlePagination(e) {
-  if (e.target.dataset.index) {
+  if (Number(e.target.dataset.index)) {
     currentPage = Number(e.target.textContent);
     render(currentPage);
     createGallery(currentPage);
@@ -25,56 +26,21 @@ function handlePagination(e) {
     createGallery(currentPage);
     return;
   } else if (e.target.dataset.index == 'right') {
-    currentPage += 1;
+    currentPage = Math.min(currentPage + 1, 100);
     render(currentPage);
     createGallery(currentPage);
     return;
   } else if (e.target.dataset.index == 'left') {
-    currentPage -= 1;
+    currentPage = Math.max(currentPage - 1, 1);
     render(currentPage);
     createGallery(currentPage);
     return;
   }
 }
-// getEl('[data-index="1"]').addEventListener('click', onBtnClick);
-// getEl('[data-index="2"]').addEventListener('click', onBtnClick);
-// getEl('[data-index="3"]').addEventListener('click', onBtnClick);
-// getEl('[data-index="4"]').addEventListener('click', onBtnClick);
-// getEl('[data-index="5"]').addEventListener('click', onBtnClick);
+// getEl('.form').addEventListener('submit', findByName);
 
-// getEl('.first-button').addEventListener('click', function () {
-//   currentPage = 1;
-//   render(currentPage);
-
-//   createGallery(currentPage);
-// });
-
-// getEl('.last-button').addEventListener('click', function () {
-//   currentPage = maxPage;
-//   render(currentPage);
-
-//   createGallery(currentPage);
-// });
-
-// getEl('.arrow-right').addEventListener('click', function () {
-//   currentPage += 1;
-//   render(currentPage);
-
-//   createGallery(currentPage);
-// });
-
-// getEl('.arrow-left').addEventListener('click', function () {
-//   currentPage -= 1;
-//   render(currentPage);
-
-//   createGallery(currentPage);
-// });
-
-// function onBtnClick(event) {
-//   currentPage = Number(event.target.textContent);
-//   render(currentPage);
-
-//   createGallery(currentPage);
+// function findByName(e){
+  
 // }
 
 function firstPage() {
