@@ -8,6 +8,10 @@ let pageCount = 2;
 
 getEl('.pagination').addEventListener('click', handlePagination);
 
+if (document.querySelector('a.nav-link.link.current').text !== 'Home') {
+  return;
+}
+
 function handlePagination(e, createGalleryFunc = createGallery) {
   if (Number(e.target.dataset.index)) {
     currentPage = Number(e.target.textContent);
