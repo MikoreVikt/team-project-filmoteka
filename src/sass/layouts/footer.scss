@@ -1,4 +1,6 @@
 .footer {
+  width: 100%;
+  height: 100px;
   padding-top: 28.71px;
   padding-bottom: 29.7px;
   background-color: var(--bg-grey-color);
@@ -6,11 +8,13 @@
   @media screen and (min-width: $tablet) {
     padding-top: 30px;
     padding-bottom: 30px;
+    height: 80px;
   }
 
   @media screen and (min-width: $desktop) {
     padding-top: 30px;
     padding-bottom: 28px;
+    height: 80px;
   }
 }
 

@@ -43,7 +43,7 @@ const students = [
     facebook: 'https://www.facebook.com',
     github: 'https://github.com',
     telegram: 'https://telegram.org',
-    linkedin: 'https://ua.linkedin.com/',
+    linkedin: 'https://www.linkedin.com/in/oleksii-chernii-3168ab183/',
   },
   {
     name: 'Алім </br>Передерко',

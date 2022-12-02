@@ -8,7 +8,6 @@ html .dark,
 .dark .gallery__title,
 .dark .footer,
 .dark .pagination__btn {
-
   background: #2e3238;
   color: var(--white-color);
 
@@ -23,7 +22,6 @@ html .dark,
   .pagination__icon {
     fill: var(--grey-text-color);
   }
-
 }
 
 .menu__btn {
@@ -39,8 +37,10 @@ html .dark,
 }
 
 .material-icons {
-  margin-top: 20px;
-
-  display: flex;
-  justify-content: space-around;
+  // margin-top: 20px;
+  // display: flex;
+  // justify-content: space-around;
+  position: absolute;
+  top: 5px;
+  right: 180px;
 }
