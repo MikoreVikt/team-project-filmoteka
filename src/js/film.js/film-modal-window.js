@@ -99,7 +99,6 @@ function renderModalWindow({
         <li class="content-text">Genre</li>
         <li class="content-values" data-genre ><b>${genre}</b></li>
       </ul>
-
       </div>
       <div class="movie">
       <h4 class="movie__title">ABOUT</h4>

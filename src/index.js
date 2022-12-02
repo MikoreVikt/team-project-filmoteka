@@ -6,4 +6,5 @@ import './js/film.js/film-modal-window';
 import './js/pagination/pagination';
 import './js/upToTop/upToTop';
 import './js/footer/team-modal-window';
+import './js/trailer/trailer';
 import './js/watched-queue/watched-queue';
