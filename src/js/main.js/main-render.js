@@ -4,7 +4,7 @@ const URL = 'https://api.themoviedb.org/3';
 const API_KEY = '0b0e3aacc3da91b758b4697a8f18cb42';
 
 const IMG_HTTPS = 'https://image.tmdb.org/t/p/w500/';
-const DEFAULT_SRC = './images/default-img.jpg';
+const DEFAULT_SRC = 'https://i.ibb.co/3NkZfz9/moive1.jpg';
 let page = 1;
 let src;
 
