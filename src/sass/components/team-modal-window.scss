@@ -44,21 +44,28 @@
   @media screen and (max-width: 320px) {
     max-width: 250px;
     width: calc(100% - 20px);
+    height: 70vh;
+    overflow: scroll;
   }
 
   @media screen and (min-width: 320px) {
     width: calc(100% - 20px);
     max-width: 250px;
+    height: 70vh;
+    overflow: scroll;
   }
 
   @media screen and (min-width: 480px) {
     width: calc(100% - 20px);
     max-width: 540px;
+    height: 80vh;
   }
 
   @media screen and (min-width: 1200px) {
     // max-width: 528px;
-    max-width: 650px;
+    max-width: 970px;
+    // height: 81%;
+    height: fit-content;
   }
 }
 .btn-team-modal--close {
@@ -75,7 +82,7 @@
 
   background-color: var(--bg-ft-color);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+  border-radius: 2px;
 
   cursor: pointer;
 
@@ -157,9 +164,31 @@
 
   color: var(--black-color);
 }
-// .team-social-link {
-// }
-.team-social-icon {
-  background-color: var(--bg-orange-color);
+.team-social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--grey-text-color);
+  height: 25px;
+  width: 25px;
   border-radius: 2px;
+  color: var(--white-color);
+  // color: currentColor;
+  stroke: var(--white-color);
+  fill: var(--white-color);
+
+  // transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--anim-standart);
+}
+
+.team-social-link:hover,
+.team-social-link:focus {
+  transform: scale(1.05);
+  background-color: var(--bg-orange-color);
+}
+
+.team-social-icon {
+  stroke: var(--white-color);
+  fill: var(--white-color);
+  // fill: inherit;
 }

@@ -2,26 +2,12 @@
   <div class="container">
     <div class="home">
       <div class="main-header">
-        <a href="./index.html" class="logo link">
+        <a href="./index.html" class="logo-animate link">
           <svg class="icon-logo" width="24" height="24">
             <use href="./images/sprite.svg#icon-film"></use>
           </svg>
           <span class="logo-span">Filmoteka</span>
         </a>
-
-        <nav class="nav">
-          <ul class="nav-list list">
-            <li class="nav-item">
-              <a href="./index.html" class="nav-link link current">Home</a>
-            </li>
-            <li class="nav-item">
-              <a href="./library.html" class="nav-link link">My library</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <form class="form" id="search-form">
         <div class="">
           <ul>
             <li>
@@ -31,6 +17,20 @@
             </li>
           </ul>
         </div>
+        <nav class="nav">
+          <ul class="nav-list list">
+            <li class="nav-item">
+              <a href="./index.html" class="nav-link link current">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="./library.html" class="nav-link link" id="library-link"
+                >My library</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <form class="form" id="search-form">
         <input
           type="text"
           placeholder="Movie search"

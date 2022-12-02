@@ -1,0 +1,46 @@
+html .dark,
+.dark body,
+.dark .modal__container,
+.dark .modal-title,
+.dark .movie__text,
+.dark .movie__title,
+.dark .content-values,
+.dark .gallery__title,
+.dark .footer,
+.dark .pagination__btn {
+
+  background: #2e3238;
+  color: var(--white-color);
+
+  .menu__btn {
+    color: var(--white-color);
+  }
+
+  .pagination__btn-current {
+    background-color: var(--bg-orange-color);
+  }
+
+  .pagination__icon {
+    fill: var(--grey-text-color);
+  }
+
+}
+
+.menu__btn {
+  color: var(--orange-color);
+  margin-right: 5px;
+}
+
+.menu__btn,
+.btn-list {
+  @media screen and (min-width: 375px) {
+    margin-right: 20px;
+  }
+}
+
+.material-icons {
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: space-around;
+}

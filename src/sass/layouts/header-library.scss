@@ -1,11 +1,11 @@
 .header-library {
     width: 100vw;
     z-index: 11;
-
-
+  
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 230px;
 
     background-image: url('/src/images/header_1 page/header_1x_320px(home-queue).jpg');
 
@@ -25,7 +25,8 @@
     }
 
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: $tablet) {
+        height: 219px;
 
         background-image: url('/src/images/header_1 page/header_1x_768px(home-warning).jpg');
 
@@ -45,7 +46,8 @@
         }
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: $desktop) {
+        height: 216px;
 
         background-image: url('/src/images/header_1 page/header_1x_1280px(watched).jpg');
 
@@ -65,6 +67,17 @@
             background-image: url('/src/images/header_1 page/header_3x_1280px(watched).jpg');
         }
     }
+}
+
+.library {
+    padding-top: 40px;
+    padding-bottom: 62px;
+
+    @media screen and (min-width: $tablet) {
+    
+            padding-top: 45px;
+            padding-bottom: 60px;
+        }
 }
 
 .btn-list {
@@ -91,7 +104,7 @@
         background-color: var(--bg-orange-color);
         box-shadow: 0px 8px 43px #fff;
         border: none;
-        transition: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: var(--anim-standart);
     }
 
     @media screen and (min-width: $tablet) {
@@ -103,7 +116,7 @@
    }
 }
 
-.button.btn-add__active {
+.btn-active {
     background-color: var(--bg-orange-color);
     color:var(--white-color);
     border-color: var(--bg-orange-color);

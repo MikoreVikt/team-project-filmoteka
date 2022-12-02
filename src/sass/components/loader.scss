@@ -1,13 +1,18 @@
 .loader {
+  width: 100%;
+  height: 4px;
+  display: inline-block;
+  position: relative;
+  background: #ff001b;
+  overflow: hidden;
+
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.75s, visibility 0.75s;
+  transition: opacity 2s, visibility 5s;
 }
 
 .loader-hidden {
@@ -17,19 +22,23 @@
 
 .loader::after {
   content: '';
-  width: 75px;
-  height: 75px;
-  border: 5px solid #ddd;
-  border-top-color: #7449f5;
-  border-radius: 50%;
-  animation: loading 0.75s ease infinite;
+  width: 100px;
+  height: 4px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  animation: animloader 0.5s linear infinite;
 }
 
-@keyframes loading {
-  from {
-    transform: rotate(0turn);
+@keyframes animloader {
+  0% {
+    left: 0;
+    transform: translateX(-100%);
   }
-  to {
-    transform: rotate(1turn);
+  100% {
+    left: 100%;
+    transform: translateX(0%);
   }
 }
