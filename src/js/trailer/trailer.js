@@ -9,7 +9,7 @@ document.addEventListener('click', e => {
   if(!e.target.dataset.trailer){
     return;
   }
-  new RunTrailer(e.target.dataset.trailer, 'e.target.dataset.name').show();
+  new RunTrailer(e.target.dataset.trailer).show();
 });
 
 class RunTrailer {
