@@ -108,6 +108,7 @@ function renderModalWindow({
       <div class="btn-wrap">
         <button type="button" class="button-watched" data-add="watched" >add to watched</button>
         <button type="button" class="button-queue" data-add="queue" >add to queue</button>
+        <button type="button" class="button-trailer" data-trailer=${id} >watch trailer</button>
       </div>
     </div>
     </div>
