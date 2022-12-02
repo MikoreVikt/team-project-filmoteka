@@ -14,18 +14,21 @@ const errorInput = document.querySelector('.message-error');
 const textError =
   'Search result not successful. Enter the correct movie name and';
 // ========================================================
-export async function createGallery(page, url = `${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`) {
+export async function createGallery(
+  page,
+  url = `${URL}/trending/movie/day?api_key=${API_KEY}&page=${page}`
+) {
   try {
-    const genresArray = await fetchGenres().then(data => data.genres);
     const filmsArray = await fetchAPI(url).then(data => data.results);
-    createGenres(filmsArray, genresArray);
-    validationData(filmsArray);
     if (!filmsArray.length) {
       errorInput.innerHTML = textError;
+      return;
     } else {
       errorInput.innerHTML = '';
     }
-
+    const genresArray = await fetchGenres().then(data => data.genres);
+    createGenres(filmsArray, genresArray);
+    validationData(filmsArray);
     markupCard(filmsArray);
   } catch (error) {
     createError();
@@ -56,18 +59,16 @@ function fetchGenres() {
 
 function markupCard(filmsArray) {
   const markup = filmsArray
-    .map(
-      ({ id, poster_path, title, genre_name, release_date, vote_average }) => {
-        const date = release_date.slice(0, 4);
-        const rating = vote_average.toFixed(1);
+    .map(({ id, poster_path, title, genre_name, release_date }) => {
+      const date = release_date.slice(0, 4);
 
-        if (poster_path !== DEFAULT_SRC) {
-          src = IMG_HTTPS + poster_path;
-        } else {
-          src = DEFAULT_SRC;
-        }
+      if (poster_path !== DEFAULT_SRC) {
+        src = IMG_HTTPS + poster_path;
+      } else {
+        src = DEFAULT_SRC;
+      }
 
-        return `
+      return `
       <li class="gallery__item card-set" data-id="${id}">
         <div class="img-wrap">
           <img
@@ -79,15 +80,11 @@ function markupCard(filmsArray) {
         </div>
         <div class="gallary-wrapper">
           <h2 class="gallery__title">${title}</h2>
-          <div class="gallery__wrap">
-            <p class="gallery__ganres">${genre_name} | ${date}</p>
-            <p class="gallery__rating">${rating}</p>
-          </div>
+          <p class="gallery__ganres">${genre_name} | ${date}</p>
         </div>
       </li>
 `;
-      }
-    )
+    })
     .join('');
   galleryRef.innerHTML = markup;
 }
