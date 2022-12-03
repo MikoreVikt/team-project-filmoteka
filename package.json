@@ -22,7 +22,7 @@
     "axios": "^1.2.0",
     "basiclightbox": "^5.0.4",
     "modern-normalize": "^1.1.0",
-    "movie-trailer": "^2.1.0",
+    "movie-trailer": "^1.0.4",
     "notiflix": "^3.2.5"
   },
   "devDependencies": {
