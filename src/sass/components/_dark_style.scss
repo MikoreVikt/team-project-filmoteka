@@ -37,10 +37,9 @@ html .dark,
     margin-right: 20px;
   }
 }
-
 .material-icons {
-  margin-top: 20px;
 
-  display: flex;
-  justify-content: space-around;
+  position: absolute;
+  top: 5px;
+  right: 180px;
 }
