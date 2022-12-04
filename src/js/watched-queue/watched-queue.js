@@ -6,75 +6,85 @@ const LOCAL_STORGE_QUEUE = 'local-storage-queue';
 let LocalStgWatchedData = [];
 let LocalStgQueueData = [];
 
-
 const refs = {
-    libraryCurrent: document.querySelector('#library-link'),
-    galleryRef: document.querySelector('.gallery'),
-    watchedButton: document.querySelector('#watched'),
-    queueButton: document.querySelector('#queue'),
- }
+  libraryCurrent: document.querySelector('#library-link'),
+  galleryRef: document.querySelector('.gallery'),
+  watchedButton: document.querySelector('#watched'),
+  queueButton: document.querySelector('#queue'),
+};
 
-currentPageCheck()
-
+currentPageCheck();
 
 function currentPageCheck() {
-    if (!refs.libraryCurrent.classList.contains("current")) {
-     return;
-}
-    else if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0) {
-      console.log('проверка при загрузке страницы', LocalStgWatchedData)
-        Notiflix.Notify.failure('There are no films in WATCHED !');
-addImgIfLocalStgEmpty()
+  if (!refs.libraryCurrent.classList.contains('current')) {
+    return;
+  } else if (
+    localStorage.getItem(LOCAL_STORGE_WATCHED) == null ||
+    JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0
+  ) {
+    console.log('проверка при загрузке страницы', LocalStgWatchedData);
+    Notiflix.Notify.failure('There are no films in WATCHED !');
+    addImgIfLocalStgEmpty();
 
     refs.queueButton.addEventListener('click', onQueueButton);
-    } else {
-       LocalStgWatchedData = JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED));
-        let LocalStgData = LocalStgWatchedData;
-        markupCard(LocalStgData)
+  } else {
+    LocalStgWatchedData = JSON.parse(
+      localStorage.getItem(LOCAL_STORGE_WATCHED)
+    );
+    let LocalStgData = LocalStgWatchedData;
+    markupCard(LocalStgData);
     refs.watchedButton.addEventListener('click', onWatchedButton);
-    refs.queueButton.addEventListener('click', onQueueButton);   
- }
+    refs.queueButton.addEventListener('click', onQueueButton);
+  }
 }
 
-
 function onWatchedButton() {
-    refs.galleryRef.innerHTML = ""; 
-    refs.watchedButton.classList.add("btn-active");
-    refs.queueButton.classList.remove("btn-active");
-  if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0) {
-        Notiflix.Notify.failure('There are no films in WATCHED !');
-        addImgIfLocalStgEmpty()
-    return
-} 
-     LocalStgWatchedData = JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED));
-    let LocalStgData = LocalStgWatchedData;
-    markupCard(LocalStgData)     
+  refs.galleryRef.innerHTML = '';
+  refs.watchedButton.classList.add('btn-active');
+  refs.queueButton.classList.remove('btn-active');
+  if (
+    localStorage.getItem(LOCAL_STORGE_WATCHED) == null ||
+    JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0
+  ) {
+    Notiflix.Notify.failure('There are no films in WATCHED !');
+    addImgIfLocalStgEmpty();
+    return;
+  }
+  LocalStgWatchedData = JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED));
+  let LocalStgData = LocalStgWatchedData;
+  markupCard(LocalStgData);
 }
 
 function onQueueButton() {
-    refs.watchedButton.classList.remove("btn-active");
-    refs.queueButton.classList.add("btn-active");
-  if (localStorage.getItem(LOCAL_STORGE_QUEUE) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE)).length == 0) {
-          refs.galleryRef.innerHTML = ""; 
-        Notiflix.Notify.failure('There are no films in Queue !');
-        addImgIfLocalStgEmpty()
-         refs.watchedButton.addEventListener('click', onWatchedButton)
-    return 
-}
-    LocalStgQueueData = JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE));
+  refs.watchedButton.classList.remove('btn-active');
+  refs.queueButton.classList.add('btn-active');
+  if (
+    localStorage.getItem(LOCAL_STORGE_QUEUE) == null ||
+    JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE)).length == 0
+  ) {
+    refs.galleryRef.innerHTML = '';
+    Notiflix.Notify.failure('There are no films in Queue !');
+    addImgIfLocalStgEmpty();
+    refs.watchedButton.addEventListener('click', onWatchedButton);
+    return;
+  }
+  LocalStgQueueData = JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE));
   let LocalStgData = LocalStgQueueData;
-  console.log(LocalStgData)
+  console.log(LocalStgData);
 
- 
-  if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0) {
-    console.log('onWatchedButton внутри функции onQUEUE', localStorage.getItem(LOCAL_STORGE_WATCHED))
-                addImgIfLocalStgEmpty()
-            refs.watchedButton.addEventListener('click', onWatchedButton)
-} markupCard(LocalStgData);
+  if (
+    localStorage.getItem(LOCAL_STORGE_WATCHED) == null ||
+    JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0
+  ) {
+    console.log(
+      'onWatchedButton внутри функции onQUEUE',
+      localStorage.getItem(LOCAL_STORGE_WATCHED)
+    );
+    addImgIfLocalStgEmpty();
+    refs.watchedButton.addEventListener('click', onWatchedButton);
+  }
+  markupCard(LocalStgData);
 }
-
-
-
 
 function markupCard(LocalStgData) {
   const markup = LocalStgData.map(({ alt, date, genre, id, src, vote }) => {
@@ -103,7 +113,7 @@ function markupCard(LocalStgData) {
   refs.galleryRef.innerHTML = markup;
 }
 
-
 function addImgIfLocalStgEmpty() {
-    refs.galleryRef.innerHTML = '<li ><img class="img-for-empty" src="https://animated-images.su/_ph/21/2/610625713.gif" alt=" "/> <h2>"THERE`S NOTHING HERE"</h2></li>'  
+  refs.galleryRef.innerHTML =
+    '<div class="img-emp"><h2 style="font-size: 20px; text-align: center; margin-bottom: 20px;">You have not chosen anything yet!</h2><img class="img-for-empty" style=" width: 800px; " src="https://kartinkin.net/pics/uploads/posts/2022-08/1660180902_1-kartinkin-net-p-fon-kinoteatr-krasivo-1.jpg" alt=" " loading="lazy"/></div>';
 }
