@@ -45,26 +45,28 @@ function saveToLocalStorage(type, e, handle){
     }
 
     
+    handle({local, type, film});
+}
+
+function handleDataOnMainPage({local, type, film}){    
+    for(let obj in local){
+        if(local[obj].data.some(d => d.id == film.id)){
+            Notiflix.Notify.warning(`This film is already in your ${obj} library`);
+            return;
+        }
+    }
+
     const key = local[type].key;
     const data = local[type].data;
-    
-    handle({data, key, film});
+    save(key, [...data, film]);
+    Notiflix.Notify.success(`This film added to your ${type} library`);
 }
 
-function handleDataOnMainPage({data, key, film}){
-    if(data.some(d => d.id == film.id)){
-        save(key, [...data.filter(d => d.id !== film.id)]);
-        Notiflix.Notify.warning(`This film removed from your ${type} library`);
-    } else {
-        save(key, [...data, film]);
-        Notiflix.Notify.success(`This film added to your ${type} library`);
-    }
-}
-
-function handleDataOnLibraryPage({data, key, film}){
+function handleDataOnLibraryPage({local, type, film}){
+    const key = local[type].key;
+    const data = local[type].data;
     const currentData = data.filter(d => d.id !== film.id);
     document.querySelector('.backdrop').classList.add('is-hidden');
-    const type = key.slice(14);
     if(document.querySelector(`#${type}`).classList.contains('btn-active')){
         !currentData.length ? addImgIfLocalStgEmpty() : markupCard(currentData);
     }
