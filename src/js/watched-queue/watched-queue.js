@@ -115,5 +115,5 @@ export function markupCard(LocalStgData) {
 
 export function addImgIfLocalStgEmpty() {
   refs.galleryRef.innerHTML =
-    '<div class="img-emp"><h2 style="font-size: 20px; text-align: center; margin-bottom: 20px;">You have not chosen anything yet!</h2><img class="img-for-empty" style=" width: 800px; " src="https://kartinkin.net/pics/uploads/posts/2022-08/1660180902_1-kartinkin-net-p-fon-kinoteatr-krasivo-1.jpg" alt=" " loading="lazy"/></div>';
+    '<div class="img-emp"><h2 style="font-size: 17px; text-align: center; margin-bottom: 20px;">You have not chosen anything yet!</h2><img class="img-for-empty" style=" max-width: 704px; " src="https://kartinkin.net/pics/uploads/posts/2022-08/1660180902_1-kartinkin-net-p-fon-kinoteatr-krasivo-1.jpg" alt=" " loading="lazy"/></div>';
 }

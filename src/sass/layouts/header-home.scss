@@ -1,5 +1,4 @@
 .header {
-    width: 100vw;
     z-index: 11;
     top: 0;
     height: 216px;
@@ -103,17 +102,19 @@
     }
 }
 
-@keyframes animateX50 {
-    0% {
-        transform: translateX(0);
-    }
+@media screen and(min-width: $tablet) {
+    @keyframes animateX50 {
+        0% {
+            transform: translateX(0);
+        }
 
-    50% {
-        transform: translateX(50px);
-    }
+        50% {
+            transform: translateX(50px);
+        }
 
-    100% {
-        transform: translateX(0);
+        100% {
+            transform: translateX(0);
+        }
     }
 }
 
@@ -148,6 +149,10 @@
     }
 
 
+}
+
+.nav {
+    z-index: 1001;
 }
 
 .nav-list {
