@@ -9,6 +9,7 @@ let pageCount = 2;
 getEl('.pagination').addEventListener('click', handlePagination);
 
 if (document.querySelector('a.nav-link.link.current').text !== 'Home') {
+  getEl('.pagination').classList.add('is-hidden');
   return;
 }
 
