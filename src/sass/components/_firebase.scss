@@ -1,19 +1,36 @@
 .navigation__item.sign-in {
   display: flex;
   flex-direction: column-reverse;
+
+  @media screen and (max-width: 767px) {
+    margin-left: 10px;
+  }
 }
 
-.navigation__item{
-    position: relative;
-      top: -70px;
-      left: 0px;
+.navigation__item {
+  position: relative;
+
+  top: -85px;
+  left: 20px;
+
+  @media screen and (min-width: 767px) {
+    top: -70px;
+    left: 0px;
+  }
 }
 
 .navigation__button.signOut {
   display: none;
-  color: rgb(11, 212, 4);
-  width: 60px;
+
+    color: rgb(3, 3, 3);
+      background-color: rgb(212, 146, 4);
+  width: 50px;
   height: 20px;
+
+  @media screen and (min-width: 767px) {
+    width: 60px;
+    height: 20px;
+  }
 }
 
 .navigation__button.signIn {
@@ -25,43 +42,44 @@
   height: 20px;
   border-radius: 30px;
   font-family: Roboto;
+
+  @media screen and (min-width: 767px) {
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 10px;
+  }
+
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 14px;
+
+  font-size: 10px;
+  line-height: 12px;
   border: 0;
   // text-transform: uppercase;
-  color: red;
-  background-color: inherit;
+  color: rgb(3, 3, 3);
+  background-color: rgb(11, 212, 4);
 
-  &:hover {
-    color: rgb(3, 3, 3);
-    background-color: rgb(11, 212, 4);
-    transition: color 300ms;
-  }
+
+  // &:hover {
+  //   color: rgb(3, 3, 3);
+  //   background-color: rgb(11, 212, 4);
+  //   transition: color 300ms;
+  // }
 }
-
-// .navigation__button.current {
-//   position: relative;
-// }
-
-// .navigation__button.current::after {
-//   position: absolute;
-//   top: 13px;
-//   display: block;
-//   content: '';
-//   height: 3px;
-//   width: 100%;
-//   // background-color: #ff6b08;
-//   margin-bottom: 20px;
-// }
 
 .user-img {
-  height: 60px;
-  width: 60px;
-}
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 
-// .navigation__button {
-//   width: 70px;
-//   height: 70px;
-// }
+  @media screen and (min-width: 767px) {
+    margin-top: 20px;
+    height: 60px;
+    width: 60px;
+  }
+
+  @media screen and (max-width: 767px) {
+    margin-left: 5px;
+  }
+
+}
