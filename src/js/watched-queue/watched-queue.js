@@ -86,7 +86,7 @@ function onQueueButton() {
   markupCard(LocalStgData);
 }
 
-function markupCard(LocalStgData) {
+export function markupCard(LocalStgData) {
   const markup = LocalStgData.map(({ alt, date, genre, id, src, vote }) => {
     // const production_date = date.slice(0, 4);
     // const rating = Number(vote).toFixed(1);
@@ -113,7 +113,7 @@ function markupCard(LocalStgData) {
   refs.galleryRef.innerHTML = markup;
 }
 
-function addImgIfLocalStgEmpty() {
+export function addImgIfLocalStgEmpty() {
   refs.galleryRef.innerHTML =
     '<div class="img-emp"><h2 style="font-size: 20px; text-align: center; margin-bottom: 20px;">You have not chosen anything yet!</h2><img class="img-for-empty" style=" width: 800px; " src="https://kartinkin.net/pics/uploads/posts/2022-08/1660180902_1-kartinkin-net-p-fon-kinoteatr-krasivo-1.jpg" alt=" " loading="lazy"/></div>';
 }
