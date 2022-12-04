@@ -8,6 +8,8 @@ const refs = getRefs();
 refs.gallery.addEventListener('click', onPosterClick);
 refs.closeBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
+const dataset = document.querySelector('a.nav-link.link.current').textContent === 'Home' ? 'add' : 'remove';
+const datasetContent = dataset === 'add' ? 'add to ' : 'remove from '
 
 function onPosterClick(e) {
   e.preventDefault();
@@ -105,8 +107,8 @@ function renderModalWindow({
       <p class="movie__text" data-overview >${overview}</p>
       </div>
       <div class="btn-wrap">
-        <button type="button" class="button-watched" data-add="watched" >add to watched</button>
-        <button type="button" class="button-queue" data-add="queue" >add to queue</button>
+        <button type="button" class="button-watched" data-${dataset}="watched" >${datasetContent} watched</button>
+        <button type="button" class="button-queue" data-${dataset}="queue" >${datasetContent} queue</button>
         <button type="button" class="button-trailer" data-trailer=${id} >watch trailer</button>
       </div>
     </div>
