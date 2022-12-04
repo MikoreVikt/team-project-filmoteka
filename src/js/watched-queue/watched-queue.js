@@ -21,12 +21,12 @@ function currentPageCheck() {
     if (!refs.libraryCurrent.classList.contains("current")) {
      return;
 }
-
- else if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null ) {
+    else if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0) {
+      console.log('проверка при загрузке страницы', LocalStgWatchedData)
         Notiflix.Notify.failure('There are no films in WATCHED !');
 addImgIfLocalStgEmpty()
 
-          refs.queueButton.addEventListener('click', onQueueButton);
+    refs.queueButton.addEventListener('click', onQueueButton);
     } else {
        LocalStgWatchedData = JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED));
         let LocalStgData = LocalStgWatchedData;
@@ -41,7 +41,7 @@ function onWatchedButton() {
     refs.galleryRef.innerHTML = ""; 
     refs.watchedButton.classList.add("btn-active");
     refs.queueButton.classList.remove("btn-active");
-    if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null) {
+  if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0) {
         Notiflix.Notify.failure('There are no films in WATCHED !');
         addImgIfLocalStgEmpty()
     return
@@ -54,26 +54,26 @@ function onWatchedButton() {
 function onQueueButton() {
     refs.watchedButton.classList.remove("btn-active");
     refs.queueButton.classList.add("btn-active");
-  if (localStorage.getItem(LOCAL_STORGE_QUEUE) == null) {
-      
+  if (localStorage.getItem(LOCAL_STORGE_QUEUE) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE)).length == 0) {
           refs.galleryRef.innerHTML = ""; 
         Notiflix.Notify.failure('There are no films in Queue !');
         addImgIfLocalStgEmpty()
          refs.watchedButton.addEventListener('click', onWatchedButton)
     return 
 }
-    console.log('111111111111111111111111')
     LocalStgQueueData = JSON.parse(localStorage.getItem(LOCAL_STORGE_QUEUE));
   let LocalStgData = LocalStgQueueData;
   console.log(LocalStgData)
 
  
-
-    if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null) {
-             addImgIfLocalStgEmpty()
+  if (localStorage.getItem(LOCAL_STORGE_WATCHED) == null || JSON.parse(localStorage.getItem(LOCAL_STORGE_WATCHED)).length == 0) {
+    console.log('onWatchedButton внутри функции onQUEUE', localStorage.getItem(LOCAL_STORGE_WATCHED))
+                addImgIfLocalStgEmpty()
             refs.watchedButton.addEventListener('click', onWatchedButton)
 } markupCard(LocalStgData);
 }
+
+
 
 
 function markupCard(LocalStgData) {
@@ -107,6 +107,3 @@ function markupCard(LocalStgData) {
 function addImgIfLocalStgEmpty() {
     refs.galleryRef.innerHTML = '<li ><img class="img-for-empty" src="https://animated-images.su/_ph/21/2/610625713.gif" alt=" "/> <h2>"THERE`S NOTHING HERE"</h2></li>'  
 }
-
-
-
