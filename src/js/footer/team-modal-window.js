@@ -38,20 +38,18 @@ const students = [
   {
     name: 'Олексій </br>Черній',
     role: 'Developer',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
-    facebook: 'https://www.facebook.com',
-    github: 'https://github.com',
+    photo: 'https://i.ibb.co/G28TdV0/Cherniy.png',
+    facebook: 'https://www.facebook.com/alex.cherniy.31',
+    github: 'https://github.com/OleksiiChernii',
     telegram: 'https://telegram.org',
-    linkedin: 'https://ua.linkedin.com/',
+    linkedin: 'https://www.linkedin.com/in/oleksii-chernii-3168ab183',
   },
   {
     name: 'Алім </br>Передерко',
     role: 'Developer',
-    photo:
-      'https://st2.depositphotos.com/6809168/11747/v/600/depositphotos_117473348-stock-illustration-student-icon-isolated.jpg',
+    photo: 'https://i.ibb.co/JsCL4pd/Perederko.png',
     facebook: 'https://www.facebook.com',
-    github: 'https://github.com',
+    github: 'https://github.com/Veron3373',
     telegram: 'https://telegram.org',
     linkedin: 'https://ua.linkedin.com/',
   },
@@ -71,7 +69,7 @@ const students = [
     facebook: 'https://www.facebook.com',
     github: 'hhttps://github.com/AnastasiyaLytvyn',
     telegram: 'https://t.me/nastyalytvyn',
-    linkedin: 'https://ua.linkedin.com/',
+    linkedin: 'https://www.linkedin.com/in/anastasiia-lytvyn-591280154/',
   },
   {
     name: 'Михайло </br>Щебуняев',
