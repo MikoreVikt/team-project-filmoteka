@@ -1,6 +1,10 @@
 import Notiflix from 'notiflix';
 // import { markupCard } from '../watched-queue/watched-queue-markup';
 
+Notiflix.Notify.init({
+  clickToClose: true,
+});
+
 const LOCAL_STORGE_WATCHED = 'local-storage-watched';
 const LOCAL_STORGE_QUEUE = 'local-storage-queue';
 let LocalStgWatchedData = [];
