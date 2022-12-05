@@ -1,35 +1,23 @@
 import Notiflix from 'notiflix';
-import {
-  markupCard,
-  addImgIfLocalStgEmpty,
-} from '../watched-queue/watched-queue';
-
-Notiflix.Notify.init({
-  clickToClose: true,
-});
+import { markupCard, addImgIfLocalStgEmpty} from '../watched-queue/watched-queue';
 
 const LOCAL_STORGE_WATCHED = 'local-storage-watched';
 const LOCAL_STORGE_QUEUE = 'local-storage-queue';
 
+export const KEYS = {LOCAL_STORGE_WATCHED, LOCAL_STORGE_QUEUE};
+
 document.addEventListener('click', handleClickMainPage);
 document.addEventListener('click', handleClickLibraryPage);
 
-function handleClickMainPage(e) {
-  if (
-    !e.target.dataset.add &&
-    (e.target.dataset.add !== 'watched' || e.target.dataset.add !== 'queue')
-  ) {
-    return;
-  }
-  saveToLocalStorage(e.target.dataset.add, e, handleDataOnMainPage);
+function handleClickMainPage(e){
+    if(!e.target.dataset.add && (e.target.dataset.add !== 'watched' || e.target.dataset.add !== 'queue')){
+        return;
+    }
+    saveToLocalStorage(e.target.dataset.add, e, handleData);
 }
 
 function handleClickLibraryPage(e) {
-  if (
-    !e.target.dataset.remove &&
-    (e.target.dataset.remove !== 'watched' ||
-      e.target.dataset.remove !== 'queue')
-  ) {
+  if (!e.target.dataset.remove && (e.target.dataset.remove !== 'watched' || e.target.dataset.remove !== 'queue')) {
     return;
   }
   saveToLocalStorage(e.target.dataset.remove, e, handleDataOnLibraryPage);
@@ -57,39 +45,44 @@ function saveToLocalStorage(type, e, handle) {
     },
   };
 
-  handle({ local, type, film });
+    handle({local, type, film, e});
 }
 
-function handleDataOnMainPage({ local, type, film }) {
-  for (let obj in local) {
-    if (local[obj].data.some(d => d.id == film.id)) {
-      Notiflix.Notify.warning(`This film is already in your ${obj} library`);
-      return;
+function handleData({local, type, film, e}){    
+    const key = local[type].key;
+    const data = local[type].data;
+    let currentData = data;
+    const other = type === 'watched' ? 'queue' : 'watched'
+    if(data.find(d => d.id === film.id)){
+        currentData = data.filter(d => d.id !== film.id);
+        save(key, currentData);
+        e.target.textContent = `add to ${type}`;
+        Notiflix.Notify.warning(`This film removed from your ${type} library`);
+    } else if(local[other].data.find(d => d.id === film.id)){
+        Notiflix.Notify.warning(`This film already in ${other} library`);
+    } else {
+        currentData = [...data, film];
+        save(key, currentData);
+        e.target.textContent = `remove from ${type}`;
+        Notiflix.Notify.success(`This film added to your ${type} library`);
     }
-  }
-
-  const key = local[type].key;
-  const data = local[type].data;
-  save(key, [...data, film]);
-  Notiflix.Notify.success(`This film added to your ${type} library`);
+    return currentData;
 }
 
-function handleDataOnLibraryPage({ local, type, film }) {
-  const key = local[type].key;
-  const data = local[type].data;
-  const currentData = data.filter(d => d.id !== film.id);
-  document.querySelector('.backdrop').classList.add('is-hidden');
-  if (document.querySelector(`#${type}`).classList.contains('btn-active')) {
-    !currentData.length ? addImgIfLocalStgEmpty() : markupCard(currentData);
-  }
-  save(key, currentData);
+function handleDataOnLibraryPage({local, type, film, e}){
+    const currentData = handleData({local, type, film, e});
+    if(document.querySelector(`#${type}`).classList.contains('btn-active')){
+        document.querySelector('.backdrop').classList.add('is-hidden');
+        !currentData.length ? addImgIfLocalStgEmpty() : markupCard(currentData);
+    }
 }
 
-function save(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
+function save(key, data){
+    data.length ? localStorage.setItem(key, JSON.stringify(data))
+                : localStorage.removeItem(key);
 }
 
-function getData(type) {
-  const result = localStorage.getItem(type);
-  return result ? JSON.parse(result) : [];
+export function getData(type){
+    const result = localStorage.getItem(type);
+    return result ? JSON.parse(result) : [];
 }
