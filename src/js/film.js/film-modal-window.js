@@ -2,6 +2,7 @@ import getRefs from './get-refs';
 import { fetchId } from './fetch-id';
 import { validationData } from '../main.js/main-render';
 import { IMG_HTTPS, DEFAULT_SRC } from '../main.js/main-render';
+import { KEYS, getData } from '../loacal-storage/local-storage'; 
 let src;
 
 const refs = getRefs();
@@ -9,10 +10,7 @@ refs.gallery.addEventListener('click', onPosterClick);
 refs.closeBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 const dataset =
-  document.querySelector('a.nav-link.link.current').textContent === 'Home'
-    ? 'add'
-    : 'remove';
-const datasetContent = dataset === 'add' ? 'add to ' : 'remove from ';
+  document.querySelector('a.nav-link.link.current').textContent === 'Home' ? 'add' : 'remove';
 
 function onPosterClick(e) {
   e.preventDefault();
@@ -110,8 +108,8 @@ function renderModalWindow({
       <p class="movie__text" data-overview >${overview}</p>
       </div>
       <div class="btn-wrap">
-        <button type="button" class="button-watched" data-${dataset}="watched" >${datasetContent} watched</button>
-        <button type="button" class="button-queue" data-${dataset}="queue" >${datasetContent} queue</button>
+        <button type="button" class="button-watched" data-${dataset}="watched" >${checkInLocalStorage(KEYS.LOCAL_STORGE_WATCHED, id)} watched</button>
+        <button type="button" class="button-queue" data-${dataset}="queue" >${checkInLocalStorage(KEYS.LOCAL_STORGE_QUEUE, id)} queue</button>
         <button type="button" class="button-trailer" data-trailer=${id} >watch trailer</button>
       </div>
     </div>
@@ -119,4 +117,8 @@ function renderModalWindow({
         </div>
         </div>`;
   refs.filmModal.innerHTML = markupModal;
+}
+
+function checkInLocalStorage(key, id){
+  return getData(key).find(d => d.id === id) ? 'Remove from' : 'Add to';
 }
