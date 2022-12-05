@@ -10,6 +10,7 @@
   transition: all 0.3s;
   @media screen and (min-width: 320px) {
     padding: 15px;
+    z-index: 2000;
   }
 }
 
@@ -110,6 +111,11 @@
   &__icon {
     fill: #000000;
   }
+}
+
+.main {
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .poster {
@@ -240,13 +246,20 @@
   border-radius: 5px;
   cursor: pointer;
   border: none;
+  transition: box-shadow var(--anim-standart), transform var(--anim-standart);
+
+  @media screen and (min-width: 320px) {
+    font-size: 9px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 80px;
+    font-size: 9px;
   }
   @media screen and (min-width: 1280px) {
     width: 110px;
     height: 44px;
+    font-size: 12px;
   }
 
   &:hover,
@@ -255,7 +268,6 @@
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
       transform: scale(1.05);
-      transition: var(--anim-standart);
     }
   }
 }
@@ -272,13 +284,20 @@
   color: var(--black-color);
   background-color: var(--white-color);
   text-transform: uppercase;
+  transition: box-shadow var(--anim-standart), transform var(--anim-standart);
+
+  @media screen and (min-width: 320px) {
+    font-size: 9px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 80px;
+    font-size: 9px;
   }
   @media screen and (min-width: 1280px) {
     width: 110px;
     height: 44px;
+    font-size: 12px;
   }
 
   &:hover,
@@ -287,7 +306,6 @@
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
       transform: scale(1.05);
-      transition: var(--anim-standart);
     }
   }
 }
@@ -299,11 +317,12 @@
   width: 70px;
   height: 40px;
   font-weight: 500;
-  font-size: 12px;
+
   line-height: 1.33;
   color: var(--black-color);
   background-color: var(--white-color);
   text-transform: uppercase;
+  transition: box-shadow var(--anim-standart), transform var(--anim-standart);
 
   &:hover,
   &:focus {
@@ -311,16 +330,21 @@
     &:hover {
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px;
       transform: scale(1.05);
-      transition: var(--anim-standart);
     }
+  }
+
+  @media screen and (min-width: 320px) {
+    font-size: 10px;
   }
 
   @media screen and (min-width: 768px) {
     width: 80px;
+    font-size: 10px;
   }
   @media screen and (min-width: 1280px) {
     width: 110px;
     height: 44px;
+    font-size: 12px;
   }
 }
 .trailer-tag {
