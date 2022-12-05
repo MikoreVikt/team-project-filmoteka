@@ -8,8 +8,11 @@ const refs = getRefs();
 refs.gallery.addEventListener('click', onPosterClick);
 refs.closeBtn.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
-const dataset = document.querySelector('a.nav-link.link.current').textContent === 'Home' ? 'add' : 'remove';
-const datasetContent = dataset === 'add' ? 'add to ' : 'remove from '
+const dataset =
+  document.querySelector('a.nav-link.link.current').textContent === 'Home'
+    ? 'add'
+    : 'remove';
+const datasetContent = dataset === 'add' ? 'add to ' : 'remove from ';
 
 function onPosterClick(e) {
   e.preventDefault();
@@ -102,7 +105,7 @@ function renderModalWindow({
         <li class="content-values" data-genre ><b>${genre}</b></li>
       </ul>
       </div>
-      <div class="movie">
+      <div class="movie main">
       <h4 class="movie__title">ABOUT</h4>
       <p class="movie__text" data-overview >${overview}</p>
       </div>
