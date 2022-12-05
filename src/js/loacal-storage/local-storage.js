@@ -73,6 +73,7 @@ function handleDataOnLibraryPage({local, type, film, e}){
     const currentData = handleData({local, type, film, e});
     if(document.querySelector(`#${type}`).classList.contains('btn-active')){
         document.querySelector('.backdrop').classList.add('is-hidden');
+        document.body.classList.remove('no-scroll');
         !currentData.length ? addImgIfLocalStgEmpty() : markupCard(currentData);
     }
 }
